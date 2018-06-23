@@ -1,6 +1,6 @@
 object Frmryxx: TFrmryxx
-  Left = 732
-  Top = 120
+  Left = 507
+  Top = 121
   Width = 544
   Height = 621
   Caption = #20154#21592#20449#24687#32500#25252
@@ -19,7 +19,7 @@ object Frmryxx: TFrmryxx
     Left = 0
     Top = 0
     Width = 528
-    Height = 582
+    Height = 583
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -32,9 +32,9 @@ object Frmryxx: TFrmryxx
       BevelOuter = bvNone
       TabOrder = 0
       object Label1: TLabel
-        Left = 32
+        Left = 8
         Top = 16
-        Width = 70
+        Width = 60
         Height = 13
         Caption = #24037#36164#32534#21495#65306
       end
@@ -59,7 +59,7 @@ object Frmryxx: TFrmryxx
       Left = 0
       Top = 49
       Width = 528
-      Height = 495
+      Height = 496
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
@@ -67,7 +67,7 @@ object Frmryxx: TFrmryxx
         Left = 0
         Top = 0
         Width = 528
-        Height = 495
+        Height = 496
         Align = alClient
         DataSource = DataSource1
         ReadOnly = True
@@ -77,12 +77,13 @@ object Frmryxx: TFrmryxx
         TitleFont.Height = -11
         TitleFont.Name = 'MS Sans Serif'
         TitleFont.Style = []
+        OnDrawColumnCell = DBGrid1DrawColumnCell
         OnTitleClick = DBGrid1TitleClick
       end
     end
     object Panel4: TPanel
       Left = 0
-      Top = 544
+      Top = 545
       Width = 528
       Height = 38
       Align = alBottom

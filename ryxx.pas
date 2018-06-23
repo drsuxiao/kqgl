@@ -32,6 +32,8 @@ type
     procedure refresh;
     procedure FormShow(Sender: TObject);
     procedure DBGrid1TitleClick(Column: TColumn);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -43,7 +45,7 @@ var
   Frmryxx: TFrmryxx;
 
 implementation
-uses ryxx_edit,DM;
+uses ryxx_edit,DM,publicrule;
 {$R *.dfm}
 
 procedure TFrmryxx.btnnewClick(Sender: TObject);
@@ -113,7 +115,9 @@ begin
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
+  //数据表格显示，列宽初始化
   FormatDisplaylable(cds,'编号,工资号,姓名,科室');
+  DBGridAutoSize(DBGrid1);
 end;
 
 procedure TFrmryxx.FormShow(Sender: TObject);
@@ -137,6 +141,13 @@ begin
   alist.CommaText := vFields;
   for i := 0 to alist.Count - 1 do
     vDataSet.Fields[i].DisplayLabel := alist[i];
+end;
+
+procedure TFrmryxx.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+begin
+  DBGridRecordSize(Column);
 end;
 
 end.

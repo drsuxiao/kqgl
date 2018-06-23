@@ -1,6 +1,6 @@
 object FrmMain: TFrmMain
-  Left = 416
-  Top = 259
+  Left = -106
+  Top = 134
   Width = 1305
   Height = 730
   Caption = #32771#21220#31649#29702#31995#32479
@@ -28,7 +28,7 @@ object FrmMain: TFrmMain
     Left = 0
     Top = 0
     Width = 1289
-    Height = 671
+    Height = 672
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
@@ -37,47 +37,42 @@ object FrmMain: TFrmMain
     Left = 128
     Top = 112
     object N1: TMenuItem
-      Caption = #25490#29677#20154#21592#35774#32622
+      Caption = #22522#30784#35774#32622
       object N2: TMenuItem
-        Caption = #20154#21592#20449#24687#32500#25252
-        OnClick = N2Click
+        Action = actryxxwh
       end
       object N3: TMenuItem
-        Caption = #25490#29677#39034#24207#35774#32622
-        OnClick = N3Click
+        Action = actpbsxsz
       end
     end
     object N4: TMenuItem
-      Caption = #25490#29677#20449#24687#31649#29702
+      Caption = #25490#29677#31649#29702
       object N5: TMenuItem
-        Caption = #29983#25104#25490#29677#20449#24687
-        OnClick = N5Click
+        Action = actscpbxx
       end
       object N6: TMenuItem
-        Caption = #26597#30475#25490#29677#20449#24687
-        OnClick = N6Click
+        Action = actckpbxx
       end
     end
     object N8: TMenuItem
-      Caption = #35831#20551#30331#35760
-      OnClick = N8Click
+      Caption = #32771#21220#31649#29702
+      object N7: TMenuItem
+        Action = actkqdj
+      end
     end
     object N9: TMenuItem
       Caption = #32479#35745#26597#35810
       object N10: TMenuItem
-        Caption = #35831#20551#20998#31867#27719#24635
-        OnClick = N10Click
+        Action = actqjflhz
       end
       object N11: TMenuItem
-        Caption = #20540#29677#27425#25968#32479#35745
-        OnClick = N11Click
+        Action = actzbcstj
       end
     end
     object N12: TMenuItem
       Caption = #25968#25454#24211#32500#25252
       object N13: TMenuItem
         Caption = #22791#20221
-        OnClick = N13Click
       end
       object N14: TMenuItem
         Caption = #36824#21407
@@ -102,5 +97,45 @@ object FrmMain: TFrmMain
     Parameters = <>
     Left = 280
     Top = 112
+  end
+  object ActionList1: TActionList
+    Left = 128
+    Top = 152
+    object actryxxwh: TAction
+      Caption = #20154#21592#20449#24687#32500#25252
+      OnExecute = actryxxwhExecute
+    end
+    object actpbsxsz: TAction
+      Caption = #25490#29677#39034#24207#35774#32622
+      OnExecute = actpbsxszExecute
+    end
+    object actscpbxx: TAction
+      Caption = #29983#25104#25490#29677#20449#24687
+      OnExecute = actscpbxxExecute
+    end
+    object actckpbxx: TAction
+      Caption = #26597#30475#25490#29677#20449#24687
+      OnExecute = actckpbxxExecute
+    end
+    object actkqdj: TAction
+      Caption = #32771#21220#30331#35760
+      OnExecute = actkqdjExecute
+    end
+    object actqjflhz: TAction
+      Caption = #35831#20551#20998#31867#27719#24635
+      OnExecute = actqjflhzExecute
+    end
+    object actzbcstj: TAction
+      Caption = #20540#29677#27425#25968#32479#35745
+      OnExecute = actzbcstjExecute
+    end
+    object actbackup: TAction
+      Caption = #22791#20221
+      OnExecute = actbackupExecute
+    end
+    object actrestore: TAction
+      Caption = #36824#21407
+      OnExecute = actrestoreExecute
+    end
   end
 end

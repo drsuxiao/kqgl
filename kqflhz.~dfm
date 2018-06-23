@@ -1,6 +1,6 @@
 object frmkqflhz: Tfrmkqflhz
-  Left = 481
-  Top = 155
+  Left = 189
+  Top = 178
   Width = 1082
   Height = 570
   Caption = #32771#21220#20998#31867#27719#24635
@@ -127,7 +127,7 @@ object frmkqflhz: Tfrmkqflhz
     Left = 0
     Top = 41
     Width = 1066
-    Height = 490
+    Height = 491
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
@@ -135,7 +135,7 @@ object frmkqflhz: Tfrmkqflhz
       Left = 0
       Top = 0
       Width = 1066
-      Height = 490
+      Height = 491
       Align = alClient
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
@@ -151,6 +151,7 @@ object frmkqflhz: Tfrmkqflhz
       TitleFont.Height = -16
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = [fsBold]
+      OnDrawColumnCell = DBGrid1DrawColumnCell
     end
   end
   object DataSource1: TDataSource

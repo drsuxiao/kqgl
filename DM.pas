@@ -2,7 +2,7 @@ unit DM;
 
 interface
 
-uses windows,SysUtils,DB, ADODB, IniFiles,Variants, classes;
+uses windows,SysUtils,DB, ADODB, IniFiles,Variants, classes,dialogs;
 
 var
   myinifile: TInifile; //实例化一个文件流对象
@@ -10,11 +10,13 @@ var
   mydataset: TDataSet;
   myquery: Tadoquery;
   mycomd: tadocommand;
+
   function SetConnection: boolean;
   function GetDataSet(vSql: string): TDataSet;
   function ExecuteSql(vSql: string): boolean;
   function AppendData(vTabelName,vFieldlist,vValuelist: string): boolean;
   function EditData(vSql: string): boolean;
+  function RestoreData(vFilename: string=''): boolean;
 
 implementation
 
@@ -176,5 +178,38 @@ begin
   result := ExecuteSql(ainsertsql);
 end;
 
+function RestoreData(vFilename: string=''): boolean;
+var
+  fi:TextFile;
+  str: string;
+  asql : string;
+begin
+  result := false;
+  with TSaveDialog.Create(nil) do
+  begin
+    Filter:='Text files (*.txt)|*.txt)|All Files(*.*)|*.*';
+    if Execute then
+    begin
+        AssignFile(fi,FileName);
+        Reset(fi);
+      try
+        while not Eof(fi) do
+        begin
+          Readln(fi,str);
+          if uppercase(trim(str)) <> '' then
+          begin
+            asql := asql + ' ' + str;
+          end;
+        end;
+        CloseFile(fi);
+        ExecuteSql(asql);
+        result := true;
+        MessageBox(0,'SQL脚本完成！','提示',MB_OK+MB_ICONINFORMATION);
+      except
+        raise exception.Create('SQL脚本执行失败!');
+      end;
+    end;
+  end;
+end;
 
 end.

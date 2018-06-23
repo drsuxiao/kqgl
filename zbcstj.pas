@@ -25,6 +25,8 @@ type
     dspro: TDataSetProvider;
     procedure btnqueryClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -53,6 +55,7 @@ begin
   cds.Data := dspro.Data;
   cds.Active := true;
   publicrule.FormatDisplaylable(cds,'部门,日期,工资编号,姓名,值班天数');
+  DBGridAutoSize(DBGrid1);
 end;
 
 procedure Tfrmzbcstj.FormShow(Sender: TObject);
@@ -68,6 +71,13 @@ begin
   cmbmonth.ItemIndex := strtoint(formatdatetime('mm',now))-1;
 
   btnqueryClick(nil);
+end;
+
+procedure Tfrmzbcstj.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+begin
+  DBGridRecordSize(Column);
 end;
 
 end.

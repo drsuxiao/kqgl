@@ -1,6 +1,6 @@
 object frmkqdjjm: Tfrmkqdjjm
-  Left = 544
-  Top = 295
+  Left = 534
+  Top = 207
   Width = 798
   Height = 568
   Caption = #32771#21220#30331#35760
@@ -19,7 +19,7 @@ object frmkqdjjm: Tfrmkqdjjm
     Left = 0
     Top = 41
     Width = 782
-    Height = 447
+    Height = 448
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -27,7 +27,7 @@ object frmkqdjjm: Tfrmkqdjjm
       Left = 0
       Top = 0
       Width = 782
-      Height = 447
+      Height = 448
       Align = alClient
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
@@ -43,11 +43,12 @@ object frmkqdjjm: Tfrmkqdjjm
       TitleFont.Height = -16
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = [fsBold]
+      OnDrawColumnCell = DBGrid1DrawColumnCell
     end
   end
   object Panel1: TPanel
     Left = 0
-    Top = 488
+    Top = 489
     Width = 782
     Height = 41
     Align = alBottom
@@ -101,21 +102,21 @@ object frmkqdjjm: Tfrmkqdjjm
     object Label3: TLabel
       Left = 16
       Top = 20
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label2: TLabel
       Left = 403
       Top = 8
-      Width = 14
+      Width = 12
       Height = 13
       Caption = #33267
     end
     object Label1: TLabel
       Left = 264
       Top = 16
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #26085#26399#65306
     end
@@ -172,8 +173,8 @@ object frmkqdjjm: Tfrmkqdjjm
   end
   object DataSource1: TDataSource
     DataSet = cds
-    Left = 216
-    Top = 121
+    Left = 296
+    Top = 153
   end
   object cds: TClientDataSet
     Aggregates = <>

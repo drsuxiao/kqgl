@@ -3,8 +3,8 @@ object FrmDateselect: TFrmDateselect
   Top = 308
   BorderStyle = bsDialog
   Caption = #26085#26399#36873#25321
-  ClientHeight = 184
-  ClientWidth = 443
+  ClientHeight = 212
+  ClientWidth = 470
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -102,12 +102,14 @@ object FrmDateselect: TFrmDateselect
       #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
       #65288#21410#31481#65289#35745#31639#26426#32593#32476#20013#24515)
   end
-  object ADODataSet1: TADODataSet
-    ConnectionString = 
-      'Provider=SQLOLEDB.1;Password=sa;Persist Security Info=True;User ' +
-      'ID=sa;Initial Catalog=mydata;Data Source=127.0.0.1'
-    Parameters = <>
-    Left = 64
+  object cds: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 104
+    Top = 136
+  end
+  object dspro: TDataSetProvider
+    Left = 136
     Top = 136
   end
 end

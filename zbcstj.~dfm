@@ -1,6 +1,6 @@
 object frmzbcstj: Tfrmzbcstj
-  Left = 821
-  Top = 189
+  Left = 386
+  Top = 204
   Width = 798
   Height = 568
   Caption = #20540#29677#27425#25968#32479#35745
@@ -18,7 +18,7 @@ object frmzbcstj: Tfrmzbcstj
     Left = 0
     Top = 41
     Width = 782
-    Height = 488
+    Height = 489
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -26,7 +26,7 @@ object frmzbcstj: Tfrmzbcstj
       Left = 0
       Top = 0
       Width = 782
-      Height = 488
+      Height = 489
       Align = alClient
       DataSource = DataSource1
       TabOrder = 0
@@ -35,6 +35,7 @@ object frmzbcstj: Tfrmzbcstj
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      OnDrawColumnCell = DBGrid1DrawColumnCell
     end
   end
   object Panel2: TPanel
@@ -48,28 +49,28 @@ object frmzbcstj: Tfrmzbcstj
     object Label4: TLabel
       Left = 468
       Top = 20
-      Width = 14
+      Width = 12
       Height = 13
       Caption = #26376
     end
     object Label1: TLabel
       Left = 32
       Top = 20
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label2: TLabel
       Left = 280
       Top = 20
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #26085#26399#65306
     end
     object Label3: TLabel
       Left = 382
       Top = 16
-      Width = 14
+      Width = 12
       Height = 13
       Caption = #24180
     end

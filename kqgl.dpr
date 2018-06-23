@@ -22,16 +22,5 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(TFrmMain, FrmMain);
-  Application.CreateForm(TFrmryxx, Frmryxx);
-  Application.CreateForm(TFrmedit_ryxx, Frmedit_ryxx);
-  Application.CreateForm(TFrmpbsx, Frmpbsx);
-  Application.CreateForm(TFrmscpbxx, Frmscpbxx);
-  Application.CreateForm(TFrmDateselect, FrmDateselect);
-  Application.CreateForm(TFrmModifypb, FrmModifypb);
-  Application.CreateForm(TFrmkqdjnew, Frmkqdjnew);
-  Application.CreateForm(Tfrmkqdjjm, frmkqdjjm);
-  Application.CreateForm(Tfrmpbxxquery, frmpbxxquery);
-  Application.CreateForm(Tfrmkqflhz, frmkqflhz);
-  Application.CreateForm(Tfrmzbcstj, frmzbcstj);
   Application.Run;
 end.

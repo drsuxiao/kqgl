@@ -26,21 +26,21 @@ object Frmedit_ryxx: TFrmedit_ryxx
     object Label1: TLabel
       Left = 56
       Top = 40
-      Width = 70
+      Width = 60
       Height = 13
       Caption = #20154#21592#32534#21495#65306
     end
     object Label2: TLabel
       Left = 56
       Top = 96
-      Width = 70
+      Width = 60
       Height = 13
       Caption = #20154#21592#22995#21517#65306
     end
     object label3: TLabel
       Left = 56
       Top = 144
-      Width = 70
+      Width = 60
       Height = 13
       Caption = #31185#23460#21517#31216#65306
     end
@@ -101,12 +101,14 @@ object Frmedit_ryxx: TFrmedit_ryxx
       Visible = False
     end
   end
-  object ADOCommand1: TADOCommand
-    ConnectionString = 
-      'Provider=SQLOLEDB.1;Password=Sa123456;Persist Security Info=True' +
-      ';User ID=sa;Initial Catalog=mydata;Data Source=127.0.0.1'
-    Parameters = <>
-    Left = 72
-    Top = 192
+  object cds: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 64
+    Top = 224
+  end
+  object dspro: TDataSetProvider
+    Left = 104
+    Top = 224
   end
 end

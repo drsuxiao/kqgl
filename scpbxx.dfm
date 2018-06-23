@@ -1,6 +1,6 @@
 object Frmscpbxx: TFrmscpbxx
-  Left = 596
-  Top = 124
+  Left = 385
+  Top = 203
   Width = 966
   Height = 603
   Caption = #29983#25104#25490#29677#20449#24687
@@ -19,7 +19,7 @@ object Frmscpbxx: TFrmscpbxx
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 523
+    Top = 524
     Width = 950
     Height = 41
     Align = alBottom
@@ -66,7 +66,7 @@ object Frmscpbxx: TFrmscpbxx
     Left = 0
     Top = 41
     Width = 950
-    Height = 482
+    Height = 483
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
@@ -74,7 +74,7 @@ object Frmscpbxx: TFrmscpbxx
       Left = 0
       Top = 0
       Width = 950
-      Height = 482
+      Height = 483
       Align = alClient
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
@@ -90,6 +90,7 @@ object Frmscpbxx: TFrmscpbxx
       TitleFont.Height = -16
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = [fsBold]
+      OnDrawColumnCell = DBGrid1DrawColumnCell
     end
   end
   object Panel3: TPanel
@@ -103,21 +104,21 @@ object Frmscpbxx: TFrmscpbxx
     object Label3: TLabel
       Left = 16
       Top = 20
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label2: TLabel
       Left = 403
       Top = 8
-      Width = 14
+      Width = 12
       Height = 13
       Caption = #33267
     end
     object Label1: TLabel
       Left = 264
       Top = 16
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #26085#26399#65306
     end

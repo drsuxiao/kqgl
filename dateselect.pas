@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ComCtrls, DB, ADODB;
+  Dialogs, StdCtrls, ComCtrls, DB, ADODB, Provider, DBClient;
 
 type
   TFrmDateselect = class(TForm)
@@ -18,7 +18,8 @@ type
     Button2: TButton;
     Label3: TLabel;
     cmbdept: TComboBox;
-    ADODataSet1: TADODataSet;
+    cds: TClientDataSet;
+    dspro: TDataSetProvider;
     procedure FormShow(Sender: TObject);
     procedure cmbdeptChange(Sender: TObject);
   private
@@ -32,22 +33,26 @@ var
   FrmDateselect: TFrmDateselect;
 
 implementation
-uses DateUtils;
+uses DateUtils,dm;
 {$R *.dfm}
 
 procedure TFrmDateselect.additems;
+var
+  asql: string;
 begin
-  self.ADODataSet1.Active := false;
-  self.ADODataSet1.CommandText := format('select code+name from ryxx where ifpb=1 and deptcode=''%s'' order by xh',[inttostr(cmbdept.ItemIndex)]);
-  self.ADODataSet1.Active := true;
-  if self.ADODataSet1.RecordCount =0 then exit;
-  self.ADODataSet1.First;
+  asql := format('select code+name from ryxx where ifpb=1 and deptcode=''%s'' order by xh'
+                 ,[inttostr(cmbdept.ItemIndex)]);
+  dspro.DataSet := dm.GetDataSet(asql);
+  cds.Data := dspro.Data;
+  cds.Active := true;
+  if cds.RecordCount =0 then exit;
+  cds.First;
   cbmfirst.Items.Clear;
   cbmfirst.Text := '';
-  while not self.ADODataSet1.Eof do
+  while not cds.Eof do
   begin
-    cbmfirst.Items.Add(ADODataSet1.Fields[0].AsString);
-    self.ADODataSet1.Next;
+    cbmfirst.Items.Add(cds.Fields[0].AsString);
+    cds.Next;
   end;
 end;
 

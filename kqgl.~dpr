@@ -12,7 +12,6 @@ uses
   kqdj in 'kqdj.pas' {Frmkqdjnew},
   kqdjjm in 'kqdjjm.pas' {frmkqdjjm},
   pbxxcx in 'pbxxcx.pas' {frmpbxxquery},
-  kqqktj in 'kqqktj.pas' {Frmkqqktj},
   kqflhz in 'kqflhz.pas' {frmkqflhz},
   zbcstj in 'zbcstj.pas' {frmzbcstj},
   DM in 'DM.pas',
@@ -32,7 +31,6 @@ begin
   Application.CreateForm(TFrmkqdjnew, Frmkqdjnew);
   Application.CreateForm(Tfrmkqdjjm, frmkqdjjm);
   Application.CreateForm(Tfrmpbxxquery, frmpbxxquery);
-  Application.CreateForm(TFrmkqqktj, Frmkqqktj);
   Application.CreateForm(Tfrmkqflhz, frmkqflhz);
   Application.CreateForm(Tfrmzbcstj, frmzbcstj);
   Application.Run;

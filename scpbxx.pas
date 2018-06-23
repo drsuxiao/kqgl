@@ -38,6 +38,8 @@ type
     procedure btnmodifyClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     FList1,Flist2: Tstringlist;
     //根据科室，是否继续上次排班，排班天数获取编码列表
@@ -174,6 +176,7 @@ begin
   cds.Data := dspro.Data;
   cds.Active := true;
   PublicRule.FormatDisplaylable(cds,'Id,日期,部门编码,部门名称,是否修改,工资编号,姓名,第几天,星期,序号');
+  DBGridAutoSize(DBGrid1);
 end;
 
 procedure TFrmscpbxx.cmbdeptChange(Sender: TObject);
@@ -279,6 +282,13 @@ end;
 procedure TFrmscpbxx.Button1Click(Sender: TObject);
 begin
   self.Close;
+end;
+
+procedure TFrmscpbxx.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+begin
+  DBGridRecordSize(Column);
 end;
 
 end.

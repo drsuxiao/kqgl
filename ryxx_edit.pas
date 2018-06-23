@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ADODB;
+  Dialogs, StdCtrls, ExtCtrls, ADODB, Provider, DB, DBClient;
 
 type
   TFrmedit_ryxx = class(TForm)
@@ -17,11 +17,11 @@ type
     cmbksmc: TComboBox;
     btnsave: TButton;
     btncancel: TButton;
-    ADOCommand1: TADOCommand;
     rdbtn: TRadioButton;
+    cds: TClientDataSet;
+    dspro: TDataSetProvider;
     procedure btncancelClick(Sender: TObject);
     procedure btnsaveClick(Sender: TObject);
-    function edit(vsql: string): boolean;
   private
     { Private declarations }
 
@@ -62,19 +62,6 @@ begin
             ,[trim(edtrybh.Text),trim(edtryxm.Text),inttostr(cmbksmc.ItemIndex),strtoint(rdbtn.Caption)]);
     if dm.EditData(asql) then
       showmessage('数据修改成功！');
-  end;
-  //edit(asql);
-end;
-
-function TFrmedit_ryxx.edit(vsql: string): boolean;
-begin
-  try
-    self.ADOCommand1.CommandText := vsql;
-    self.ADOCommand1.Execute;
-    result := true;
-  except
-    showmessage('保存失败！');
-    result := false;
   end;
 end;
 

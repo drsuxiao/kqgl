@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, DB, ADODB, StdCtrls, ExtCtrls;
+  Dialogs, Menus, DB, ADODB, StdCtrls, ExtCtrls, ActnList;
 
 type
   TFrmMain = class(TForm)
@@ -28,17 +28,29 @@ type
     Memo1: TMemo;
     DataSetValues: TADODataSet;
     Panel1: TPanel;
-    procedure N2Click(Sender: TObject);
-    procedure N3Click(Sender: TObject);
-    procedure N5Click(Sender: TObject);
-    procedure N8Click(Sender: TObject);
-    procedure N6Click(Sender: TObject);
-    procedure N7Click(Sender: TObject);
-    procedure N10Click(Sender: TObject);
-    procedure N11Click(Sender: TObject);
-    procedure N13Click(Sender: TObject);
+    N7: TMenuItem;
+    ActionList1: TActionList;
+    actryxxwh: TAction;
+    actpbsxsz: TAction;
+    actscpbxx: TAction;
+    actckpbxx: TAction;
+    actkqdj: TAction;
+    actqjflhz: TAction;
+    actzbcstj: TAction;
+    actbackup: TAction;
+    actrestore: TAction;
+    procedure actryxxwhExecute(Sender: TObject);
+    procedure actpbsxszExecute(Sender: TObject);
+    procedure actscpbxxExecute(Sender: TObject);
+    procedure actckpbxxExecute(Sender: TObject);
+    procedure actkqdjExecute(Sender: TObject);
+    procedure actqjflhzExecute(Sender: TObject);
+    procedure actzbcstjExecute(Sender: TObject);
+    procedure actbackupExecute(Sender: TObject);
+    procedure actrestoreExecute(Sender: TObject);
   private
     { Private declarations }
+    FBackupFileName: string;
   public
     { Public declarations }
   end;
@@ -47,10 +59,10 @@ var
   FrmMain: TFrmMain;
 
 implementation
-uses ryxx,pbsxsz,scpbxx,kqdjjm,pbxxcx,kqqktj,kqflhz,zbcstj,dm;
+uses ryxx,pbsxsz,scpbxx,kqdjjm,pbxxcx,kqflhz,zbcstj,dm;
 {$R *.dfm}
 //人员信息维护
-procedure TFrmMain.N2Click(Sender: TObject);
+procedure TFrmMain.actryxxwhExecute(Sender: TObject);
 var
   aform: TFrmryxx;
 begin
@@ -59,8 +71,9 @@ begin
   aform.ShowModal;
   aform.Free;
 end;
+
 //排班顺序设置
-procedure TFrmMain.N3Click(Sender: TObject);
+procedure TFrmMain.actpbsxszExecute(Sender: TObject);
 var
   aform: TFrmpbsx;
 begin
@@ -68,8 +81,9 @@ begin
   aform.ShowModal;
   aform.Free;
 end;
+
 //生成排班信息
-procedure TFrmMain.N5Click(Sender: TObject);
+procedure TFrmMain.actscpbxxExecute(Sender: TObject);
 var
   aform: TFrmscpbxx;
 begin
@@ -77,8 +91,9 @@ begin
   aform.ShowModal;
   aform.Free;
 end;
+
 //考勤登记
-procedure TFrmMain.N8Click(Sender: TObject);
+procedure TFrmMain.actkqdjExecute(Sender: TObject);
 var
   aform: Tfrmkqdjjm;
 begin
@@ -86,8 +101,9 @@ begin
   aform.ShowModal;
   aform.Free;
 end;
+
 //查看排班信息
-procedure TFrmMain.N6Click(Sender: TObject);
+procedure TFrmMain.actckpbxxExecute(Sender: TObject);
 var
   aform: Tfrmpbxxquery;
 begin
@@ -96,16 +112,8 @@ begin
   aform.Free;
 end;
 
-procedure TFrmMain.N7Click(Sender: TObject);
-var
-  aform: TFrmkqqktj;
-begin
-  aform := TFrmkqqktj.Create(nil);
-  aform.ShowModal;
-  aform.Free;
-end;
-//
-procedure TFrmMain.N10Click(Sender: TObject);
+// 请假分类汇总
+procedure TFrmMain.actqjflhzExecute(Sender: TObject);
 var
   aform: Tfrmkqflhz;
 begin
@@ -113,17 +121,17 @@ begin
   aform.ShowModal;
   aform.Free;
 end;
-
-procedure TFrmMain.N11Click(Sender: TObject);
+//值班次数统计
+procedure TFrmMain.actzbcstjExecute(Sender: TObject);
 var
   aform: Tfrmzbcstj;
 begin
   aform := Tfrmzbcstj.Create(nil);
   aform.ShowModal;
   aform.Free;
-end; 
-
-procedure TFrmMain.N13Click(Sender: TObject);
+end;
+//数据备份
+procedure TFrmMain.actbackupExecute(Sender: TObject);
 var
   vCols: string;
   vSql: string;
@@ -185,10 +193,14 @@ begin
     end;
     memo1.Text := vSql;
     memo1.Lines.SaveToFile(savedialog1.FileName);
+    FBackupFileName := savedialog1.FileName;
     showmessage('数据备份成功！');
   end;
+end;
 
-
+procedure TFrmMain.actrestoreExecute(Sender: TObject);
+begin
+  RestoreData(FBackupFileName);
 end;
 
 end.

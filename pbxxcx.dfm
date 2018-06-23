@@ -1,6 +1,6 @@
 object frmpbxxquery: Tfrmpbxxquery
-  Left = 619
-  Top = 234
+  Left = 456
+  Top = 188
   Width = 886
   Height = 568
   Caption = #25490#29677#20449#24687
@@ -27,21 +27,21 @@ object frmpbxxquery: Tfrmpbxxquery
     object Label1: TLabel
       Left = 48
       Top = 20
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label2: TLabel
       Left = 304
       Top = 20
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #26085#26399#65306
     end
     object Label5: TLabel
       Left = 435
       Top = 20
-      Width = 14
+      Width = 12
       Height = 13
       Caption = #33267
     end
@@ -99,7 +99,7 @@ object frmpbxxquery: Tfrmpbxxquery
     Left = 0
     Top = 57
     Width = 870
-    Height = 472
+    Height = 473
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
@@ -107,7 +107,7 @@ object frmpbxxquery: Tfrmpbxxquery
       Left = 0
       Top = 0
       Width = 870
-      Height = 472
+      Height = 473
       Align = alClient
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
