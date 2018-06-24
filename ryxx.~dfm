@@ -1,6 +1,6 @@
 object Frmryxx: TFrmryxx
-  Left = 507
-  Top = 121
+  Left = 1117
+  Top = 154
   Width = 544
   Height = 621
   Caption = #20154#21592#20449#24687#32500#25252

@@ -1,9 +1,9 @@
-object Frmryxx: TFrmryxx
-  Left = 1117
-  Top = 154
-  Width = 544
-  Height = 621
-  Caption = #20154#21592#20449#24687#32500#25252
+object FormBaseInfo: TFormBaseInfo
+  Left = 678
+  Top = 214
+  Width = 577
+  Height = 467
+  Caption = #22522#30784#20449#24687#32500#25252#31383#20307
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,59 +15,49 @@ object Frmryxx: TFrmryxx
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
+  object pnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 528
-    Height = 582
+    Width = 561
+    Height = 428
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    object Panel2: TPanel
+    object pnlQuery: TPanel
       Left = 0
       Top = 0
-      Width = 528
+      Width = 561
       Height = 49
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      object Label1: TLabel
-        Left = 8
-        Top = 16
-        Width = 60
-        Height = 13
-        Caption = #24037#36164#32534#21495#65306
-      end
+      DesignSize = (
+        561
+        49)
       object btnquery: TButton
-        Left = 224
+        Left = 449
         Top = 16
         Width = 75
         Height = 25
+        Anchors = [akTop, akRight]
         Caption = #26597#35810
         TabOrder = 0
         OnClick = btnqueryClick
       end
-      object Edit1: TEdit
-        Left = 72
-        Top = 16
-        Width = 121
-        Height = 21
-        TabOrder = 1
-      end
     end
-    object Panel3: TPanel
+    object pnlData: TPanel
       Left = 0
       Top = 49
-      Width = 528
-      Height = 495
+      Width = 561
+      Height = 341
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0
-        Width = 528
-        Height = 495
+        Width = 561
+        Height = 341
         Align = alClient
         DataSource = DataSource1
         TabOrder = 0
@@ -80,50 +70,53 @@ object Frmryxx: TFrmryxx
         OnTitleClick = DBGrid1TitleClick
       end
     end
-    object Panel4: TPanel
+    object pnlFunction: TPanel
       Left = 0
-      Top = 544
-      Width = 528
+      Top = 390
+      Width = 561
       Height = 38
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
       DesignSize = (
-        528
+        561
         38)
       object btnnew: TButton
-        Left = 48
+        Left = 188
         Top = 8
         Width = 75
         Height = 25
+        Anchors = [akTop, akRight]
         Caption = #26032#22686
         TabOrder = 0
         OnClick = btnnewClick
       end
       object btnmodify: TButton
-        Left = 136
+        Left = 276
         Top = 8
         Width = 75
         Height = 25
+        Anchors = [akTop, akRight]
         Caption = #20462#25913
         TabOrder = 1
         OnClick = btnmodifyClick
       end
       object btndelete: TButton
-        Left = 224
+        Left = 364
         Top = 8
         Width = 75
         Height = 25
+        Anchors = [akTop, akRight]
         Caption = #21024#38500
         TabOrder = 2
         OnClick = btndeleteClick
       end
       object btnclose: TButton
-        Left = 414
+        Left = 458
         Top = 8
         Width = 75
         Height = 25
-        Anchors = [akRight, akBottom]
+        Anchors = [akTop, akRight]
         Caption = #36864#20986
         TabOrder = 3
         OnClick = btncloseClick

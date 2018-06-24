@@ -72,14 +72,15 @@ object FrmMain: TFrmMain
     object N12: TMenuItem
       Caption = #25968#25454#24211#32500#25252
       object N13: TMenuItem
-        Caption = #22791#20221
+        Action = actbackup
       end
       object N14: TMenuItem
-        Caption = #36824#21407
+        Action = actrestore
       end
     end
   end
   object SaveDialog1: TSaveDialog
+    DefaultExt = 'txt'
     Left = 168
     Top = 112
   end

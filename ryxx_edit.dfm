@@ -1,6 +1,6 @@
 object Frmedit_ryxx: TFrmedit_ryxx
-  Left = 873
-  Top = 258
+  Left = 926
+  Top = 259
   BorderStyle = bsDialog
   Caption = #32534#36753#31383
   ClientHeight = 268

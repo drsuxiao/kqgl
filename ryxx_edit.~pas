@@ -22,7 +22,6 @@ type
     dspro: TDataSetProvider;
     procedure btncancelClick(Sender: TObject);
     procedure btnsaveClick(Sender: TObject);
-    function edit(vsql: string): boolean;
   private
     { Private declarations }
 

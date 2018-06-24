@@ -139,6 +139,9 @@ var
   vv: string;
 begin
   if not dm.SetConnection then exit;
+  savedialog1.Filter:='sql file(*.sql)|*.sql|text file(*.txt)|*.txt|all files(*.*)|*.*';
+  savedialog1.FileName := formatdatetime('yyyymmddhhmmss',now);
+  savedialog1.DefaultExt := 'sql';
   if savedialog1.Execute then
   begin
     DataSetTable.Connection := dm.mycon;
@@ -197,7 +200,7 @@ begin
     showmessage('数据备份成功！');
   end;
 end;
-
+//数据还原
 procedure TFrmMain.actrestoreExecute(Sender: TObject);
 begin
   RestoreData(FBackupFileName);

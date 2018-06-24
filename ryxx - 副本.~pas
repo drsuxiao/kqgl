@@ -8,19 +8,17 @@ uses
   Provider;
 
 type
-  TFrmryxx = class(TForm)
-    Panel1: TPanel;
+  TFormBaseInfo = class(TForm)
+    pnlMain: TPanel;
     DataSource1: TDataSource;
-    Panel2: TPanel;
-    Panel3: TPanel;
-    Panel4: TPanel;
+    pnlQuery: TPanel;
+    pnlData: TPanel;
+    pnlFunction: TPanel;
     btnquery: TButton;
     btnnew: TButton;
     btnmodify: TButton;
     btndelete: TButton;
     btnclose: TButton;
-    Label1: TLabel;
-    Edit1: TEdit;
     cds: TClientDataSet;
     dspro: TDataSetProvider;
     DBGrid1: TDBGrid;
@@ -41,13 +39,13 @@ type
   end;
 
 var
-  Frmryxx: TFrmryxx;
+  FormBaseInfo: TFormBaseInfo;
 
 implementation
 uses ryxx_edit,DM,publicrule;
 {$R *.dfm}
 
-procedure TFrmryxx.btnnewClick(Sender: TObject);
+procedure TFormBaseInfo.btnnewClick(Sender: TObject);
 var
   aform: TFrmedit_ryxx;
 begin
@@ -57,7 +55,7 @@ begin
     refresh;
 end;  
 
-procedure TFrmryxx.btnmodifyClick(Sender: TObject);
+procedure TFormBaseInfo.btnmodifyClick(Sender: TObject);
 var
   aform: TFrmedit_ryxx;
 begin
@@ -75,7 +73,7 @@ begin
   end;
 end;
 
-procedure TFrmryxx.btndeleteClick(Sender: TObject);
+procedure TFormBaseInfo.btndeleteClick(Sender: TObject);
 var
   asql: string;
 begin
@@ -87,12 +85,12 @@ begin
   end;
 end;
 
-procedure TFrmryxx.btncloseClick(Sender: TObject);
+procedure TFormBaseInfo.btncloseClick(Sender: TObject);
 begin
   self.Close;
 end;
 
-procedure TFrmryxx.btnqueryClick(Sender: TObject);
+procedure TFormBaseInfo.btnqueryClick(Sender: TObject);
 var
   asql: string;
 begin
@@ -106,7 +104,7 @@ begin
   cds.Filtered := true;
 end;
 
-procedure TFrmryxx.refresh;
+procedure TFormBaseInfo.refresh;
 var
   asql : string;
 begin
@@ -119,18 +117,18 @@ begin
   InitDBGrid(DBGrid1,'编号,工资号,姓名,科室');
 end;
 
-procedure TFrmryxx.FormShow(Sender: TObject);
+procedure TFormBaseInfo.FormShow(Sender: TObject);
 begin
   //refresh;
 end;
 
-procedure TFrmryxx.DBGrid1TitleClick(Column: TColumn);
+procedure TFormBaseInfo.DBGrid1TitleClick(Column: TColumn);
 begin
   //if (not column.Field is Tblobfield) then//Tblobfield不能索引，二进制
     cds.IndexFieldNames:=column.Field.FieldName;
 end;
 
-procedure TFrmryxx.DBGrid1DrawColumnCell(Sender: TObject;
+procedure TFormBaseInfo.DBGrid1DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
   State: TGridDrawState);
 begin

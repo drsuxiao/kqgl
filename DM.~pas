@@ -187,7 +187,7 @@ begin
   result := false;
   with TSaveDialog.Create(nil) do
   begin
-    Filter:='Text files (*.txt)|*.txt)|All Files(*.*)|*.*';
+    Filter:='sql file(*.sql)|*.sql|text file(*.txt)|*.txt|all files(*.*)|*.*';
     if Execute then
     begin
         AssignFile(fi,FileName);
