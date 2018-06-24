@@ -18,8 +18,7 @@ uses
   PublicRule in 'PublicRule.pas',
   DualList in 'C:\Program Files (x86)\Borland\Delphi7\ObjRepos\DUALLIST.pas' {DualListDlg},
   BaseInfo in 'BaseForm\BaseInfo.pas' {FormBaseInfo},
-  BaseInfoRule in 'BaseForm\BaseInfoRule.pas',
-  Unit1 in 'BaseForm\Unit1.pas' {Frame1: TFrame};
+  BaseInfoRule in 'BaseForm\BaseInfoRule.pas';
 
 {$R *.res}
 
