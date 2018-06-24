@@ -49,7 +49,7 @@ begin
   dtfrom.DateTime := StartOfTheMonth(now);
   dtto.DateTime := EndOfTheMonth(now);
   cmbdept.ItemIndex := 2;
-  refresh;
+  //refresh;
 end;
 
 procedure Tfrmkqflhz.refresh;

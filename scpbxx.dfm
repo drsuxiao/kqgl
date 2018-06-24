@@ -19,7 +19,7 @@ object Frmscpbxx: TFrmscpbxx
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 524
+    Top = 523
     Width = 950
     Height = 41
     Align = alBottom
@@ -66,7 +66,7 @@ object Frmscpbxx: TFrmscpbxx
     Left = 0
     Top = 41
     Width = 950
-    Height = 483
+    Height = 482
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
@@ -74,7 +74,7 @@ object Frmscpbxx: TFrmscpbxx
       Left = 0
       Top = 0
       Width = 950
-      Height = 483
+      Height = 482
       Align = alClient
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET

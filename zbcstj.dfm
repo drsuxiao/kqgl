@@ -18,7 +18,7 @@ object frmzbcstj: Tfrmzbcstj
     Left = 0
     Top = 41
     Width = 782
-    Height = 489
+    Height = 488
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -26,7 +26,7 @@ object frmzbcstj: Tfrmzbcstj
       Left = 0
       Top = 0
       Width = 782
-      Height = 489
+      Height = 488
       Align = alClient
       DataSource = DataSource1
       TabOrder = 0

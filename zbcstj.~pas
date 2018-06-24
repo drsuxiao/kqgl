@@ -55,6 +55,7 @@ begin
   cds.Data := dspro.Data;
   cds.Active := true;
   publicrule.FormatDisplaylable(cds,'部门,日期,工资编号,姓名,值班天数');
+  DBGridAutoSize(DBGrid1);
 end;
 
 procedure Tfrmzbcstj.FormShow(Sender: TObject);

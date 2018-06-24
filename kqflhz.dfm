@@ -127,7 +127,7 @@ object frmkqflhz: Tfrmkqflhz
     Left = 0
     Top = 41
     Width = 1066
-    Height = 491
+    Height = 490
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
@@ -135,7 +135,7 @@ object frmkqflhz: Tfrmkqflhz
       Left = 0
       Top = 0
       Width = 1066
-      Height = 491
+      Height = 490
       Align = alClient
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET

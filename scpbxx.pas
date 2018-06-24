@@ -161,7 +161,7 @@ begin
   dtfrom.DateTime := StartOfTheMonth(now);
   dtto.DateTime := EndOfTheMonth(now);
   cmbdept.ItemIndex := 0;
-  refresh;
+  //refresh;
 end;
 
 procedure TFrmscpbxx.refresh;

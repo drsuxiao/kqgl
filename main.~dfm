@@ -1,6 +1,6 @@
 object FrmMain: TFrmMain
-  Left = -106
-  Top = 134
+  Left = 399
+  Top = 180
   Width = 1305
   Height = 730
   Caption = #32771#21220#31649#29702#31995#32479
@@ -28,7 +28,7 @@ object FrmMain: TFrmMain
     Left = 0
     Top = 0
     Width = 1289
-    Height = 672
+    Height = 671
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1

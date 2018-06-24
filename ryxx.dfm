@@ -19,7 +19,7 @@ object Frmryxx: TFrmryxx
     Left = 0
     Top = 0
     Width = 528
-    Height = 583
+    Height = 582
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -59,7 +59,7 @@ object Frmryxx: TFrmryxx
       Left = 0
       Top = 49
       Width = 528
-      Height = 496
+      Height = 495
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
@@ -67,7 +67,7 @@ object Frmryxx: TFrmryxx
         Left = 0
         Top = 0
         Width = 528
-        Height = 496
+        Height = 495
         Align = alClient
         DataSource = DataSource1
         ReadOnly = True
@@ -83,7 +83,7 @@ object Frmryxx: TFrmryxx
     end
     object Panel4: TPanel
       Left = 0
-      Top = 545
+      Top = 544
       Width = 528
       Height = 38
       Align = alBottom

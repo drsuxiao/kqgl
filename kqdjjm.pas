@@ -176,7 +176,7 @@ begin
   dtfrom.DateTime := StartOfTheMonth(now);
   dtto.DateTime := EndOfTheMonth(now);
   cmbdept.ItemIndex := 2;
-  refresh;
+  //refresh;
 end;
 
 procedure Tfrmkqdjjm.Button1Click(Sender: TObject);

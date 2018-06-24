@@ -38,7 +38,6 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure FormatDisplaylable(var vDataSet: Tclientdataset; vFields: string);
   end;
 
 var
@@ -97,6 +96,7 @@ procedure TFrmryxx.btnqueryClick(Sender: TObject);
 var
   asql: string;
 begin
+ refresh;
  if trim(edit1.Text) <> '' then
     asql := format('code like ''%%%s%%''',[trim(edit1.Text)])
   else
@@ -122,7 +122,7 @@ end;
 
 procedure TFrmryxx.FormShow(Sender: TObject);
 begin
-  refresh;
+  //refresh;
 end;
 
 procedure TFrmryxx.DBGrid1TitleClick(Column: TColumn);
@@ -131,23 +131,11 @@ begin
     cds.IndexFieldNames:=column.Field.FieldName;
 end;
 
-//提取公共方法  格式化字段名称
-procedure TFrmryxx.FormatDisplaylable(var vDataSet: Tclientdataset; vFields: string);
-var
-  alist: Tstringlist;
-  i: integer;
-begin
-  alist := tstringlist.Create;
-  alist.CommaText := vFields;
-  for i := 0 to alist.Count - 1 do
-    vDataSet.Fields[i].DisplayLabel := alist[i];
-end;
-
 procedure TFrmryxx.DBGrid1DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
   State: TGridDrawState);
 begin
-  DBGridRecordSize(Column);
+  publicrule.DBGridRecordSize(Column);
 end;
 
 end.

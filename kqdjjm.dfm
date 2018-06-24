@@ -19,7 +19,7 @@ object frmkqdjjm: Tfrmkqdjjm
     Left = 0
     Top = 41
     Width = 782
-    Height = 448
+    Height = 447
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -27,7 +27,7 @@ object frmkqdjjm: Tfrmkqdjjm
       Left = 0
       Top = 0
       Width = 782
-      Height = 448
+      Height = 447
       Align = alClient
       DataSource = DataSource1
       Font.Charset = DEFAULT_CHARSET
@@ -48,7 +48,7 @@ object frmkqdjjm: Tfrmkqdjjm
   end
   object Panel1: TPanel
     Left = 0
-    Top = 489
+    Top = 488
     Width = 782
     Height = 41
     Align = alBottom

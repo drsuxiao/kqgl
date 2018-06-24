@@ -33,7 +33,6 @@ type
   private
     { Private declarations }
     procedure refresh;
-    procedure DBGridExport(GRID:TDBGRID);
   public
     { Public declarations }
   end;

@@ -40,7 +40,6 @@ type
   private
     { Private declarations }
     function execute(vSql: string): boolean;
-    //procedure DBGridExport(GRID:TDBGRID);
     procedure refresh;
   public
     { Public declarations }

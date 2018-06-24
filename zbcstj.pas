@@ -70,7 +70,7 @@ begin
   cmbyear.ItemIndex := 0;
   cmbmonth.ItemIndex := strtoint(formatdatetime('mm',now))-1;
 
-  btnqueryClick(nil);
+  //btnqueryClick(nil);
 end;
 
 procedure Tfrmzbcstj.DBGrid1DrawColumnCell(Sender: TObject;
