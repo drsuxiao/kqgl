@@ -1,8 +1,8 @@
 object Frmryxx: TFrmryxx
-  Left = 1117
-  Top = 154
-  Width = 544
-  Height = 621
+  Left = 751
+  Top = 200
+  Width = 393
+  Height = 493
   Caption = #20154#21592#20449#24687#32500#25252
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,15 +18,15 @@ object Frmryxx: TFrmryxx
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 528
-    Height = 582
+    Width = 377
+    Height = 454
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
       Top = 0
-      Width = 528
+      Width = 377
       Height = 49
       Align = alTop
       BevelOuter = bvNone
@@ -41,7 +41,7 @@ object Frmryxx: TFrmryxx
       object btnquery: TButton
         Left = 224
         Top = 16
-        Width = 75
+        Width = 57
         Height = 25
         Caption = #26597#35810
         TabOrder = 0
@@ -58,16 +58,16 @@ object Frmryxx: TFrmryxx
     object Panel3: TPanel
       Left = 0
       Top = 49
-      Width = 528
-      Height = 495
+      Width = 377
+      Height = 367
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0
-        Width = 528
-        Height = 495
+        Width = 377
+        Height = 367
         Align = alClient
         DataSource = DataSource1
         TabOrder = 0
@@ -82,48 +82,44 @@ object Frmryxx: TFrmryxx
     end
     object Panel4: TPanel
       Left = 0
-      Top = 544
-      Width = 528
+      Top = 416
+      Width = 377
       Height = 38
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      DesignSize = (
-        528
-        38)
       object btnnew: TButton
-        Left = 48
+        Left = 16
         Top = 8
-        Width = 75
+        Width = 49
         Height = 25
         Caption = #26032#22686
         TabOrder = 0
         OnClick = btnnewClick
       end
       object btnmodify: TButton
-        Left = 136
+        Left = 72
         Top = 8
-        Width = 75
+        Width = 49
         Height = 25
         Caption = #20462#25913
         TabOrder = 1
         OnClick = btnmodifyClick
       end
       object btndelete: TButton
-        Left = 224
+        Left = 128
         Top = 8
-        Width = 75
+        Width = 49
         Height = 25
         Caption = #21024#38500
         TabOrder = 2
         OnClick = btndeleteClick
       end
       object btnclose: TButton
-        Left = 414
+        Left = 221
         Top = 8
-        Width = 75
+        Width = 52
         Height = 25
-        Anchors = [akRight, akBottom]
         Caption = #36864#20986
         TabOrder = 3
         OnClick = btncloseClick

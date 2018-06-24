@@ -27,6 +27,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid1TitleClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -77,6 +78,11 @@ procedure Tfrmzbcstj.DBGrid1DrawColumnCell(Sender: TObject;
   State: TGridDrawState);
 begin
   DBGridRecordSize(Column);
+end;
+
+procedure Tfrmzbcstj.DBGrid1TitleClick(Column: TColumn);
+begin
+  cds.IndexFieldNames:=column.Field.FieldName;
 end;
 
 end.

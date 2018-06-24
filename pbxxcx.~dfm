@@ -1,8 +1,8 @@
 object frmpbxxquery: Tfrmpbxxquery
   Left = 456
   Top = 188
-  Width = 886
-  Height = 568
+  Width = 677
+  Height = 572
   Caption = #25490#29677#20449#24687
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,42 +12,41 @@ object frmpbxxquery: Tfrmpbxxquery
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
-  WindowState = wsMaximized
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 870
+    Width = 661
     Height = 57
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
     object Label1: TLabel
-      Left = 48
-      Top = 20
+      Left = 8
+      Top = 28
       Width = 36
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label2: TLabel
-      Left = 304
-      Top = 20
+      Left = 232
+      Top = 28
       Width = 36
       Height = 13
       Caption = #26085#26399#65306
     end
     object Label5: TLabel
-      Left = 435
-      Top = 20
+      Left = 356
+      Top = 28
       Width = 12
       Height = 13
       Caption = #33267
     end
     object cmbdept: TComboBox
-      Left = 88
-      Top = 12
+      Left = 50
+      Top = 24
       Width = 177
       Height = 21
       ItemHeight = 13
@@ -59,8 +58,8 @@ object frmpbxxquery: Tfrmpbxxquery
         #65288#21410#31481#65289#35745#31639#26426#32593#32476#20013#24515)
     end
     object dtfrom: TDateTimePicker
-      Left = 342
-      Top = 12
+      Left = 370
+      Top = 24
       Width = 81
       Height = 21
       Date = 42835.928764282410000000
@@ -68,8 +67,8 @@ object frmpbxxquery: Tfrmpbxxquery
       TabOrder = 1
     end
     object dtto: TDateTimePicker
-      Left = 456
-      Top = 12
+      Left = 274
+      Top = 24
       Width = 81
       Height = 21
       Date = 42835.928764282410000000
@@ -77,8 +76,8 @@ object frmpbxxquery: Tfrmpbxxquery
       TabOrder = 2
     end
     object btnquery: TButton
-      Left = 568
-      Top = 16
+      Left = 469
+      Top = 22
       Width = 75
       Height = 25
       Caption = #26597#35810
@@ -86,8 +85,8 @@ object frmpbxxquery: Tfrmpbxxquery
       OnClick = btnqueryClick
     end
     object Button1: TButton
-      Left = 664
-      Top = 16
+      Left = 557
+      Top = 22
       Width = 75
       Height = 25
       Caption = #23548#20986'Excel'
@@ -98,16 +97,16 @@ object frmpbxxquery: Tfrmpbxxquery
   object Panel2: TPanel
     Left = 0
     Top = 57
-    Width = 870
-    Height = 472
+    Width = 661
+    Height = 476
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
     object DBGrid1: TDBGrid
       Left = 0
       Top = 0
-      Width = 870
-      Height = 472
+      Width = 661
+      Height = 476
       Align = alClient
       DataSource = DataSource1
       TabOrder = 0

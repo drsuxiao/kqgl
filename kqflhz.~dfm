@@ -145,6 +145,7 @@ object frmkqflhz: Tfrmkqflhz
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
       OnDrawColumnCell = DBGrid1DrawColumnCell
+      OnTitleClick = DBGrid1TitleClick
     end
   end
   object DataSource1: TDataSource

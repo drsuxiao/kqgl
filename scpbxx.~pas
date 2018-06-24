@@ -40,6 +40,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid1TitleClick(Column: TColumn);
   private
     FList1,Flist2: Tstringlist;
     //根据科室，是否继续上次排班，排班天数获取编码列表
@@ -288,6 +289,11 @@ procedure TFrmscpbxx.DBGrid1DrawColumnCell(Sender: TObject;
   State: TGridDrawState);
 begin
   DBGridRecordSize(Column);
+end;
+
+procedure TFrmscpbxx.DBGrid1TitleClick(Column: TColumn);
+begin
+  cds.IndexFieldNames:=column.Field.FieldName;
 end;
 
 end.
