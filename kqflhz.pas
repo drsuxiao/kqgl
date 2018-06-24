@@ -11,7 +11,6 @@ type
   Tfrmkqflhz = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
-    DBGrid1: TDBGrid;
     Label1: TLabel;
     Label2: TLabel;
     dtfrom: TDateTimePicker;
@@ -25,11 +24,13 @@ type
     Cmbtype: TComboBox;
     cds: TClientDataSet;
     dspro: TDataSetProvider;
+    DBGrid1: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid1TitleClick(Column: TColumn);
   private
     { Private declarations }
     procedure refresh;
@@ -72,8 +73,7 @@ begin
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.data;
   cds.Active := true;
-  publicrule.FormatDisplaylable(cds,'编号,姓名,类型编码,类型名称,天数');
-  DBGridAutoSize(DBGrid1);
+  Initdbgrid(DBGrid1,'工资编号,姓名,类型编码,类型名称,天数');
 end;
 
 procedure Tfrmkqflhz.Button1Click(Sender: TObject);
@@ -91,6 +91,11 @@ procedure Tfrmkqflhz.DBGrid1DrawColumnCell(Sender: TObject;
   State: TGridDrawState);
 begin
   DBGridRecordSize(Column);
+end;
+
+procedure Tfrmkqflhz.DBGrid1TitleClick(Column: TColumn);
+begin
+  cds.IndexFieldNames:=column.Field.FieldName;
 end;
 
 end.

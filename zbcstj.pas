@@ -27,6 +27,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid1TitleClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -54,8 +55,7 @@ begin
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
-  publicrule.FormatDisplaylable(cds,'部门,日期,工资编号,姓名,值班天数');
-  DBGridAutoSize(DBGrid1);
+  InitDbgrid(dbgrid1,'部门,日期,工资编号,姓名,值班天数');
 end;
 
 procedure Tfrmzbcstj.FormShow(Sender: TObject);
@@ -78,6 +78,11 @@ procedure Tfrmzbcstj.DBGrid1DrawColumnCell(Sender: TObject;
   State: TGridDrawState);
 begin
   DBGridRecordSize(Column);
+end;
+
+procedure Tfrmzbcstj.DBGrid1TitleClick(Column: TColumn);
+begin
+  cds.IndexFieldNames:=column.Field.FieldName;
 end;
 
 end.

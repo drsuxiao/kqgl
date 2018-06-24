@@ -36,6 +36,7 @@ object frmzbcstj: Tfrmzbcstj
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
       OnDrawColumnCell = DBGrid1DrawColumnCell
+      OnTitleClick = DBGrid1TitleClick
     end
   end
   object Panel2: TPanel

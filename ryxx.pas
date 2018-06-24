@@ -11,7 +11,6 @@ type
   TFrmryxx = class(TForm)
     Panel1: TPanel;
     DataSource1: TDataSource;
-    DBGrid1: TDBGrid;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -24,6 +23,7 @@ type
     Edit1: TEdit;
     cds: TClientDataSet;
     dspro: TDataSetProvider;
+    DBGrid1: TDBGrid;
     procedure btnnewClick(Sender: TObject);
     procedure btncloseClick(Sender: TObject);
     procedure btndeleteClick(Sender: TObject);
@@ -116,8 +116,7 @@ begin
   cds.Data := dspro.Data;
   cds.Active := true;
   //数据表格显示，列宽初始化
-  FormatDisplaylable(cds,'编号,工资号,姓名,科室');
-  DBGridAutoSize(DBGrid1);
+  InitDBGrid(DBGrid1,'编号,工资号,姓名,科室');
 end;
 
 procedure TFrmryxx.FormShow(Sender: TObject);

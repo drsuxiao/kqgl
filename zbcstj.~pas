@@ -54,8 +54,7 @@ begin
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
-  publicrule.FormatDisplaylable(cds,'部门,日期,工资编号,姓名,值班天数');
-  DBGridAutoSize(DBGrid1);
+  InitDbgrid(dbgrid1,'部门,日期,工资编号,姓名,值班天数');
 end;
 
 procedure Tfrmzbcstj.FormShow(Sender: TObject);
@@ -70,7 +69,7 @@ begin
   cmbyear.ItemIndex := 0;
   cmbmonth.ItemIndex := strtoint(formatdatetime('mm',now))-1;
 
-  btnqueryClick(nil);
+  //btnqueryClick(nil);
 end;
 
 procedure Tfrmzbcstj.DBGrid1DrawColumnCell(Sender: TObject;

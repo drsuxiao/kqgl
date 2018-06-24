@@ -30,20 +30,14 @@ object frmkqdjjm: Tfrmkqdjjm
       Height = 447
       Align = alClient
       DataSource = DataSource1
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-      ParentFont = False
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
-      TitleFont.Height = -16
+      TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
-      TitleFont.Style = [fsBold]
+      TitleFont.Style = []
       OnDrawColumnCell = DBGrid1DrawColumnCell
+      OnTitleClick = DBGrid1TitleClick
     end
   end
   object Panel1: TPanel

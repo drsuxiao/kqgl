@@ -11,7 +11,6 @@ type
   TFrmryxx = class(TForm)
     Panel1: TPanel;
     DataSource1: TDataSource;
-    DBGrid1: TDBGrid;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -24,6 +23,7 @@ type
     Edit1: TEdit;
     cds: TClientDataSet;
     dspro: TDataSetProvider;
+    DBGrid1: TDBGrid;
     procedure btnnewClick(Sender: TObject);
     procedure btncloseClick(Sender: TObject);
     procedure btndeleteClick(Sender: TObject);
@@ -96,6 +96,7 @@ procedure TFrmryxx.btnqueryClick(Sender: TObject);
 var
   asql: string;
 begin
+ refresh;
  if trim(edit1.Text) <> '' then
     asql := format('code like ''%%%s%%''',[trim(edit1.Text)])
   else
@@ -115,8 +116,7 @@ begin
   cds.Data := dspro.Data;
   cds.Active := true;
   //数据表格显示，列宽初始化
-  FormatDisplaylable(cds,'编号,工资号,姓名,科室');
-  DBGridAutoSize(DBGrid1);
+  InitDBGrid(DBGrid1,'编号,工资号,姓名,科室');
 end;
 
 procedure TFrmryxx.FormShow(Sender: TObject);
@@ -126,7 +126,7 @@ end;
 
 procedure TFrmryxx.DBGrid1TitleClick(Column: TColumn);
 begin
-  //if (not column.Field is Tblobfield) then//Tblobfield不能索引，二进制
+  if (not column.Field isTblobfield) then//Tblobfield不能索引，二进制
     cds.IndexFieldNames:=column.Field.FieldName;
 end;
 

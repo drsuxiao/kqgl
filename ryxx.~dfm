@@ -70,7 +70,6 @@ object Frmryxx: TFrmryxx
         Height = 495
         Align = alClient
         DataSource = DataSource1
-        ReadOnly = True
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText

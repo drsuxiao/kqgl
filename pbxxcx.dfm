@@ -99,7 +99,7 @@ object frmpbxxquery: Tfrmpbxxquery
     Left = 0
     Top = 57
     Width = 870
-    Height = 473
+    Height = 472
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
@@ -107,22 +107,15 @@ object frmpbxxquery: Tfrmpbxxquery
       Left = 0
       Top = 0
       Width = 870
-      Height = 473
+      Height = 472
       Align = alClient
       DataSource = DataSource1
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-      ParentFont = False
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
-      TitleFont.Height = -21
+      TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
-      TitleFont.Style = [fsBold]
+      TitleFont.Style = []
       OnDrawColumnCell = DBGrid1DrawColumnCell
     end
   end

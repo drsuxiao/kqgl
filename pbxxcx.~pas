@@ -21,11 +21,11 @@ type
     Panel2: TPanel;
     DataSource1: TDataSource;
     Button1: TButton;
-    DBGrid1: TDBGrid;
     cds: TClientDataSet;
     dspro: TDataSetProvider;
     cds1: TClientDataSet;
     dspro1: TDataSetProvider;
+    DBGrid1: TDBGrid;
     procedure btnqueryClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -42,7 +42,7 @@ var
   frmpbxxquery: Tfrmpbxxquery;
 
 implementation
-uses DateUtils,ComObj,dm;
+uses DateUtils,ComObj,dm, publicrule;
 {$R *.dfm}
 
 procedure Tfrmpbxxquery.btnqueryClick(Sender: TObject);
@@ -91,10 +91,10 @@ begin
     cds1.Next;
   end;
   ayear := inttostr(yearof(dtfrom.DateTime));
-  aquery := 'select '''' as ''月份/星期'','''' as ''星期日'','''' as ''星期一'','''' as ''星期二'','''' as ''星期三'','''' as ''星期四'','''' as ''星期五'','''' as ''星期六''';
+  //aquery := 'select '''' as ''月份/星期'','''' as ''星期日'','''' as ''星期一'','''' as ''星期二'','''' as ''星期三'','''' as ''星期四'','''' as ''星期五'','''' as ''星期六''';
   for i:=astartmonth to astopmonth do
   begin
-    str := ayear+'年'+inttostr(i)+'月';
+    str := ayear+'.'+inttostr(i);
     //aquery := aquery + format(' union all select ''%s'','''','''','''','''','''','''','''' ',[ayear+'年'+inttostr(i)+'月']);
     for j:=1 to 6 do
     begin
@@ -108,13 +108,13 @@ begin
       end;
     end;
   end;
-
+  aquery := copy(aquery,12,length(aquery)-11);
   dspro.DataSet := dm.GetDataSet(aquery);
   cds.Data := dspro.Data;
   cds.Active := true;
   
   //数据表格显示，列宽初始化
-  DBGridAutoSize(DBGrid1);
+  InitDBGrid(DBGrid1,'年.月,星期日,星期一,星期二,星期三,星期四,星期五,星期六');
 end;
 
 function Tfrmpbxxquery.GetTheWeek(vDateTime: Tdatetime): integer;
@@ -145,7 +145,7 @@ procedure Tfrmpbxxquery.DBGrid1DrawColumnCell(Sender: TObject;
 begin
   DBGridRecordSize(Column);
   
-  if  DBGrid1.DataSource.DataSet.RecNo mod 2 =0 then
+ { if  DBGrid1.DataSource.DataSet.RecNo mod 2 =0 then
   begin
       DBGrid1.Canvas.Brush.Color := clSilver;
   end
@@ -159,7 +159,7 @@ begin
     DBGrid1.Canvas.Brush.Color := clRed;
 
   DbGrid1.Canvas.pen.mode:=pmMask;
-  DbGrid1.DefaultDrawColumnCell(Rect,datacol,column,state);
+  DbGrid1.DefaultDrawColumnCell(Rect,datacol,column,state);   }
 end;
 
 end.

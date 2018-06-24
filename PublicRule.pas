@@ -11,8 +11,9 @@ procedure DBGridExport(GRID:TDBGRID);
 //返回记录数据网格列显示最大宽度是否成功
 function DBGridRecordSize(mColumn: TColumn): Boolean;
 //返回数据网格自动适应宽度是否成功
-function DBGridAutoSize(mDBGrid: TDBGrid;mOffset: Integer = 5): Boolean;
-
+function DBGridAutoSize(mDBGrid: TDBGrid;mOffset: Integer = 10): Boolean;
+//初始化表格的font style
+procedure InitDBGrid(mDBGrid: TDBGrid; vFields: string='');
 implementation
 
 function DBGridRecordSize(mColumn: TColumn): Boolean;
@@ -25,7 +26,7 @@ function DBGridRecordSize(mColumn: TColumn): Boolean;
       Result   :=   True;   
   end;   {   DBGridRecordSize   }   
 
-function DBGridAutoSize(mDBGrid: TDBGrid;mOffset: Integer = 5): Boolean;
+function DBGridAutoSize(mDBGrid: TDBGrid;mOffset: Integer = 10): Boolean;
   {   返回数据网格自动适应宽度是否成功   }
   var   
       I:   Integer;   
@@ -45,14 +46,26 @@ function DBGridAutoSize(mDBGrid: TDBGrid;mOffset: Integer = 5): Boolean;
           mDBGrid.Refresh;   
       end;   
       Result   :=   True;   
-  end;   {   DBGridAutoSize   }   
+  end;   {   DBGridAutoSize   }
 
+procedure InitDBGrid(mDBGrid: TDBGrid; vFields: string='');
+begin
+  //字体格式
+  mDBGrid.Font.Size := 12;
+  mDBGrid.TitleFont.Size := 12;
+  //mDBGrid.TitleFont.Style := [fsBold];
+  //标题格式化显示
+  FormatDisplaylable(Tclientdataset(mDBGrid.datasource.dataset),vFields);
+  //自适应列宽
+  DBGridAutoSize(mDBGrid,20);
+end;
 
 procedure FormatDisplaylable(vDataSet: Tclientdataset; vFields: string);
 var
   alist: Tstringlist;
   i: integer;
 begin
+  if vFields = '' then exit;
   alist := tstringlist.Create;
   alist.CommaText := vFields;
   for i := 0 to alist.Count - 1 do

@@ -10,7 +10,6 @@ uses
 type
   Tfrmkqdjjm = class(TForm)
     Panel2: TPanel;
-    DBGrid1: TDBGrid;
     Panel1: TPanel;
     btncreate: TButton;
     btndelete: TButton;
@@ -28,6 +27,7 @@ type
     Button2: TButton;
     cds: TClientDataSet;
     dspro: TDataSetProvider;
+    DBGrid1: TDBGrid;
     procedure btncreateClick(Sender: TObject);
     procedure btnmodifyClick(Sender: TObject);
     procedure btnqueryClick(Sender: TObject);
@@ -37,6 +37,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid1TitleClick(Column: TColumn);
   private
     { Private declarations }
     function execute(vSql: string): boolean;
@@ -102,8 +103,7 @@ begin
   cds.Data := dspro.Data;
   cds.Active := true;
   //数据表格显示，列宽初始化
-  FormatDisplaylable(cds,'id,工资编码,类型编码,类型名称,姓名,开始日期,开始时间,结束日期,结束时间,登记日期,科室,备注');
-  DBGridAutoSize(DBGrid1);
+  Initdbgrid(DBGrid1,'序号,工资编码,类型编码,类型名称,姓名,开始日期,开始时间,结束日期,结束时间,登记日期,科室,备注');
 end;
 
 procedure Tfrmkqdjjm.btnmodifyClick(Sender: TObject);
@@ -194,6 +194,11 @@ procedure Tfrmkqdjjm.DBGrid1DrawColumnCell(Sender: TObject;
   State: TGridDrawState);
 begin
   DBGridRecordSize(Column);
+end;
+
+procedure Tfrmkqdjjm.DBGrid1TitleClick(Column: TColumn);
+begin
+  cds.IndexFieldNames:=column.Field.FieldName;
 end;
 
 end.
