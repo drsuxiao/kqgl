@@ -203,7 +203,7 @@ end;
 //数据还原
 procedure TFrmMain.actrestoreExecute(Sender: TObject);
 begin
-  RestoreData(FBackupFileName);
+  RestoreData(FBackupFileName);    
 end;
 
 end.

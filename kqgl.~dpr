@@ -16,7 +16,7 @@ uses
   zbcstj in 'zbcstj.pas' {frmzbcstj},
   DM in 'DM.pas',
   PublicRule in 'PublicRule.pas',
-  DualList in 'C:\Program Files (x86)\Borland\Delphi7\ObjRepos\DUALLIST.pas' {DualListDlg},
+  DualList in 'C:\Program Files (x86)\Borland\Delphi7\ObjRepos\DualList.PAS' {DualListDlg},
   BaseInfo in 'BaseForm\BaseInfo.pas' {FormBaseInfo},
   BaseInfoRule in 'BaseForm\BaseInfoRule.pas';
 
