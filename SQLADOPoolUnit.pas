@@ -125,13 +125,13 @@ begin
     DBIniFile := TIniFile.Create(iniFile);  
     ConnectionName := DBIniFile.ReadString('Connection','ConnectionName', 'SQLConnection');  
     DriverName := DBIniFile.ReadString('Connection','DriverName', 'MSDASQL');  
-    ProviderName := DBIniFile.ReadString('Connection','ProviderName', 'MSDASQL');  
+    ProviderName := DBIniFile.ReadString('Connection','ProviderName', 'SQLOLEDB.1');  
     DBServer:= DBIniFile.ReadString('Connection','DBServer', '127.0.0.1');  
     HostName := DBIniFile.ReadString('Connection','HostName', '127.0.0.1');  
-    DataBase := DBIniFile.ReadString('Connection','DataBase', 'GPMS2000');  
+    DataBase := DBIniFile.ReadString('Connection','DataBase', 'mydata');  
     Port:=DBIniFile.ReadInteger('Connection','Port', 1433);  
     UserName := DBIniFile.ReadString('Connection','UserName', 'Sa');  
-    PassWord := DBIniFile.ReadString('Connection','PassWord', 'Sa');  
+    PassWord := DBIniFile.ReadString('Connection','PassWord', 'Sa123456');  
     LoginSrvUser := DBIniFile.ReadString('Connection','LoginSrvUser', 'hyz');  
     LoginSrvPassword := DBIniFile.ReadString('Connection','LoginSrvPassword', 'hyz');  
     TCPPort := DBIniFile.ReadInteger('Connection','TCPPort', 211);  
