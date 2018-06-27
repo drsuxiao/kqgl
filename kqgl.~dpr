@@ -19,13 +19,13 @@ uses
   DualList in 'C:\Program Files (x86)\Borland\Delphi7\ObjRepos\DualList.PAS' {DualListDlg},
   BaseInfo in 'BaseForm\BaseInfo.pas' {FormBaseInfo},
   BaseInfoRule in 'BaseForm\BaseInfoRule.pas',
-  SQLADOPoolUnit in 'SQLADOPoolUnit.pas';
+  SQLADOPoolUnit in 'SQLADOPoolUnit.pas',
+  test in 'test.pas' {Form1};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFrmMain, FrmMain);
-  Application.CreateForm(TFormBaseInfo, FormBaseInfo);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.

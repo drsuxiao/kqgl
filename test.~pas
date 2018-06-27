@@ -10,9 +10,8 @@ type
   TForm1 = class(TForm)
     Button1: TButton;
     ADOQuery1: TADOQuery;
-    procedure FormCreate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -26,10 +25,14 @@ implementation
 uses SQLADOPoolUnit;
 {$R *.dfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TForm1.Button1Click(Sender: TObject);
 begin
-   ADOConfig := TADOConfig.Create('SERVERDB.LXH');
-   ADOPool := TADOPool.Create(2);
+  try
+    ADOQuery1.Connection:= ADOPool.GetCon(ADOConfig);
+    ADOQuery1.Open;
+  finally
+    ADOPool.PutCon(ADOQuery1.Connection);
+  end;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -38,15 +41,10 @@ begin
    ADOConfig.Free;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-  try
-    ADOQuery1.Connection:= ADOPool.GetCon(ADOConfig);
-    ADOQuery1.Open;
-    showmessage(adoquery1.FieldValues['name'].astring);
-  finally
-    ADOPool.PutCon(ADOQuery1.Connection);
-  end;
-end;
-
+initialization
+   ADOConfig := TADOConfig.Create('SERVERDB.LXH');
+   ADOPool := TADOPool.Create(2);
+finalization
+   //ADOPool.Free;
+   //ADOConfig.Free;
 end.
