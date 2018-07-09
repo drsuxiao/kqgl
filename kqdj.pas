@@ -25,7 +25,6 @@ type
     btnOk: TButton;
     btncancel: TButton;
     ADODataSet1: TADODataSet;
-    ADOCommand1: TADOCommand;
     Label8: TLabel;
     Memo1: TMemo;
     procedure cmbdeptChange(Sender: TObject);
@@ -40,13 +39,14 @@ var
   Frmkqdjnew: TFrmkqdjnew;
 
 implementation
-
+uses dm,publicrule;
 {$R *.dfm}
 
 procedure TFrmkqdjnew.cmbdeptChange(Sender: TObject);
 begin
+  self.ADODataSet1.Connection := dm.mycon;
   self.ADODataSet1.Active := false;
-  self.ADODataSet1.CommandText := format('select rtrim(code)+'',''+rtrim(name) from ryxx where deptcode=''%s'' order by xh',[inttostr(cmbdept.ItemIndex)]);
+  self.ADODataSet1.CommandText := format('select rtrim(code)+'',''+rtrim(name) from employee where deptcode=''%s'' ',[publicrule.GetComboxItemNo(cmbdept)]);
   self.ADODataSet1.Active := true;
   if self.ADODataSet1.RecordCount =0 then exit;
   self.ADODataSet1.First;
@@ -61,8 +61,10 @@ end;
 
 procedure TFrmkqdjnew.FormCreate(Sender: TObject);
 begin
+  publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
+  self.ADODataSet1.Connection := dm.mycon;
   self.ADODataSet1.Active := false;
-  self.ADODataSet1.CommandText := format('select rtrim(code)+'',''+rtrim(name) from ryxx where deptcode=''%s'' order by xh',[inttostr(cmbdept.ItemIndex)]);
+  self.ADODataSet1.CommandText := format('select rtrim(code)+'',''+rtrim(name) from employee where deptcode=''%s'' ',[publicrule.GetComboxItemNo(cmbdept)]);
   self.ADODataSet1.Active := true;
   if self.ADODataSet1.RecordCount =0 then exit;
   self.ADODataSet1.First;

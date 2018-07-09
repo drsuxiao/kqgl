@@ -31,6 +31,7 @@ type
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DBGrid1TitleClick(Column: TColumn);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure refresh;
@@ -96,6 +97,11 @@ end;
 procedure Tfrmkqflhz.DBGrid1TitleClick(Column: TColumn);
 begin
   cds.IndexFieldNames:=column.Field.FieldName;
+end;
+
+procedure Tfrmkqflhz.FormCreate(Sender: TObject);
+begin
+  publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
 end;
 
 end.

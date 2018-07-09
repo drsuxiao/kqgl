@@ -25,6 +25,7 @@ type
     procedure cmbdeptChange(Sender: TObject);
     function GetCodeName(vDate,vDept: string): string;
     procedure dtrqChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure additems;
@@ -36,23 +37,23 @@ var
   FrmModifypb: TFrmModifypb;
 
 implementation
-uses DM;
+uses DM,publicrule;
 {$R *.dfm}
 
 procedure TFrmModifypb.FormShow(Sender: TObject);
 begin
   dtrq.DateTime := now;
-  cmbdept.ItemIndex := 0;
   additems;
   edtold.Enabled := false;
-  edtold.Text := GetCodeName(formatdatetime('yyyy-mm-dd',dtrq.DateTime),inttostr(cmbdept.ItemIndex));
+  edtold.Text := GetCodeName(formatdatetime('yyyy-mm-dd',dtrq.DateTime),publicrule.GetComboxItemNo(cmbdept));
 end;
 
 procedure TFrmModifypb.additems;
 var
   asql: string;
 begin
-  asql := format('select code+name from ryxx where ifpb=1 and deptcode=''%s'' order by xh',[inttostr(cmbdept.ItemIndex)]);
+  asql := format('select t.code,e.name,t.deptcode from xh t left join employee e on t.code=e.code where t.deptcode=''%s'' order by t.sqno'
+                 ,[PublicRule.GetComboxItemNo(cmbdept)]);
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
@@ -62,7 +63,7 @@ begin
   cmbnew.Items.Clear;
   while not cds.Eof do
   begin
-    cmbnew.Items.Add(cds.Fields[0].AsString);
+    cmbnew.Items.Add(cds.Fields[0].AsString +' '+ cds.Fields[1].AsString);
     cds.Next;
   end;
 end;
@@ -70,7 +71,7 @@ end;
 procedure TFrmModifypb.cmbdeptChange(Sender: TObject);
 begin
   additems;
-  edtold.Text := GetCodeName(formatdatetime('yyyy-mm-dd',dtrq.DateTime),inttostr(cmbdept.ItemIndex));
+  edtold.Text := GetCodeName(formatdatetime('yyyy-mm-dd',dtrq.DateTime),publicrule.GetComboxItemNo(cmbdept));
 end;
 
 function TFrmModifypb.GetCodeName(vDate, vDept: string): string;
@@ -90,7 +91,12 @@ end;
 
 procedure TFrmModifypb.dtrqChange(Sender: TObject);
 begin
-  edtold.Text := GetCodeName(formatdatetime('yyyy-mm-dd',dtrq.DateTime),inttostr(cmbdept.ItemIndex));
+  edtold.Text := GetCodeName(formatdatetime('yyyy-mm-dd',dtrq.DateTime),publicrule.GetComboxItemNo(cmbdept));
+end;
+
+procedure TFrmModifypb.FormCreate(Sender: TObject);
+begin
+  publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
 end;
 
 end.

@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, DB, ADODB, StdCtrls, ExtCtrls, ActnList;
+  Dialogs, Menus, DB, ADODB, StdCtrls, ExtCtrls, ActnList, SQLADOPoolUnit;
 
 type
   TFrmMain = class(TForm)
@@ -39,6 +39,8 @@ type
     actzbcstj: TAction;
     actbackup: TAction;
     actrestore: TAction;
+    ActDeptSet: TAction;
+    N15: TMenuItem;
     procedure actryxxwhExecute(Sender: TObject);
     procedure actpbsxszExecute(Sender: TObject);
     procedure actscpbxxExecute(Sender: TObject);
@@ -48,6 +50,7 @@ type
     procedure actzbcstjExecute(Sender: TObject);
     procedure actbackupExecute(Sender: TObject);
     procedure actrestoreExecute(Sender: TObject);
+    procedure ActDeptSetExecute(Sender: TObject);
   private
     { Private declarations }
     FBackupFileName: string;
@@ -59,7 +62,7 @@ var
   FrmMain: TFrmMain;
 
 implementation
-uses ryxx,pbsxsz,scpbxx,kqdjjm,pbxxcx,kqflhz,zbcstj,dm;
+uses ryxx,pbsxsz,scpbxx,kqdjjm,pbxxcx,kqflhz,zbcstj,dm,DeptSet;
 {$R *.dfm}
 //人员信息维护
 procedure TFrmMain.actryxxwhExecute(Sender: TObject);
@@ -81,6 +84,17 @@ begin
   aform.ShowModal;
   aform.Free;
 end;
+
+//科室维护
+procedure TFrmMain.ActDeptSetExecute(Sender: TObject);
+var
+  aform: TFormDept;
+begin
+  aform := TFormDept.Create(nil);
+  aform.ShowModal;
+  aform.Free;
+end;
+
 
 //生成排班信息
 procedure TFrmMain.actscpbxxExecute(Sender: TObject);
@@ -203,7 +217,7 @@ end;
 //数据还原
 procedure TFrmMain.actrestoreExecute(Sender: TObject);
 begin
-  RestoreData(FBackupFileName);
+  RestoreData(FBackupFileName);    
 end;
 
 end.

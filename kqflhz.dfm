@@ -12,6 +12,7 @@ object frmkqflhz: Tfrmkqflhz
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -26,28 +27,28 @@ object frmkqflhz: Tfrmkqflhz
     object Label1: TLabel
       Left = 208
       Top = 16
-      Width = 36
+      Width = 42
       Height = 13
       Caption = #26085#26399#65306
     end
     object Label2: TLabel
       Left = 331
       Top = 16
-      Width = 12
+      Width = 14
       Height = 13
       Caption = #33267
     end
     object Label3: TLabel
       Left = 8
       Top = 16
-      Width = 36
+      Width = 42
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label4: TLabel
       Left = 432
       Top = 16
-      Width = 36
+      Width = 42
       Height = 13
       Caption = #31867#22411#65306
     end
@@ -85,11 +86,6 @@ object frmkqflhz: Tfrmkqflhz
       Height = 21
       ItemHeight = 13
       TabOrder = 3
-      Text = #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
-      Items.Strings = (
-        #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
-        #65288#21410#31481#65289#35745#31639#26426#32593#32476#20013#24515
-        #20840#37096)
     end
     object Button2: TButton
       Left = 616

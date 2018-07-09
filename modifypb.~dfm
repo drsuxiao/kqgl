@@ -1,10 +1,10 @@
 object FrmModifypb: TFrmModifypb
-  Left = 812
-  Top = 461
+  Left = 871
+  Top = 186
   BorderStyle = bsDialog
   Caption = #20462#25913#25490#29677#20449#24687
-  ClientHeight = 209
-  ClientWidth = 423
+  ClientHeight = 187
+  ClientWidth = 329
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,6 +13,7 @@ object FrmModifypb: TFrmModifypb
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -24,7 +25,7 @@ object FrmModifypb: TFrmModifypb
     Caption = #21407#25490#29677#20154#21592#65306
   end
   object Label2: TLabel
-    Left = 192
+    Left = 176
     Top = 88
     Width = 84
     Height = 13
@@ -52,7 +53,7 @@ object FrmModifypb: TFrmModifypb
     Caption = #31185#23460#65306
   end
   object cmbnew: TComboBox
-    Left = 192
+    Left = 176
     Top = 104
     Width = 97
     Height = 21
@@ -77,18 +78,18 @@ object FrmModifypb: TFrmModifypb
     OnChange = dtrqChange
   end
   object btnOk: TButton
-    Left = 224
-    Top = 152
-    Width = 75
+    Left = 152
+    Top = 144
+    Width = 57
     Height = 25
     Caption = #30830#23450
     ModalResult = 1
     TabOrder = 3
   end
   object btnCancel: TButton
-    Left = 320
-    Top = 152
-    Width = 75
+    Left = 224
+    Top = 144
+    Width = 57
     Height = 25
     Caption = #21462#28040
     ModalResult = 2
@@ -100,30 +101,17 @@ object FrmModifypb: TFrmModifypb
     Width = 177
     Height = 21
     ItemHeight = 13
-    ItemIndex = 0
     TabOrder = 5
-    Text = #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
     OnChange = cmbdeptChange
-    Items.Strings = (
-      #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
-      #65288#21410#31481#65289#35745#31639#26426#32593#32476#20013#24515)
-  end
-  object ADODataSet1: TADODataSet
-    ConnectionString = 
-      'Provider=SQLOLEDB.1;Password=Sa123456;Persist Security Info=True' +
-      ';User ID=sa;Initial Catalog=mydata;Data Source=127.0.0.1'
-    Parameters = <>
-    Left = 80
-    Top = 160
   end
   object cds: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 160
-    Top = 144
+    Left = 216
+    Top = 8
   end
   object dspro: TDataSetProvider
-    Left = 184
-    Top = 144
+    Left = 248
+    Top = 8
   end
 end

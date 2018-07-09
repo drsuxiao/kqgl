@@ -2,7 +2,7 @@ unit PublicRule;
 
 interface
 
-uses  Windows, SysUtils, Classes, DBClient,DBGrids,Dialogs,ComObj,Graphics,math;
+uses  Windows, SysUtils, Classes, DBClient,DBGrids,Dialogs,ComObj,Graphics,math,StdCtrls;
 
 //格式化字段名称
 procedure FormatDisplaylable(vDataSet: Tclientdataset; vFields: string);
@@ -14,12 +14,44 @@ function DBGridRecordSize(mColumn: TColumn): Boolean;
 function DBGridAutoSize(mDBGrid: TDBGrid;mOffset: Integer = 10): Boolean;
 //初始化表格的font style
 procedure InitDBGrid(mDBGrid: TDBGrid; vFields: string='');
+//初始化科室列表
+procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox);
+function GetComboxItemNo(vCombox: TComboBox): string;
 implementation
+uses dm,Variants;
+
+function GetComboxItemNo(vCombox: TComboBox): string;
+begin
+  result := inttostr(Integer(vCombox.Items.Objects[vCombox.ItemIndex]))
+end;
+
+procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox);
+var
+  aitemname: string;
+  aitemno: integer;
+  alist: Tstringlist;
+  asql: string;
+begin
+  vCombox.Items.Clear;
+  asql := format('select %s,%s from %s order by %s',[vCode,vName,vTabelName,vCode]);
+  with dm.GetDataSet(asql) do
+  begin
+    if recordcount = 0 then exit;
+    while not eof do
+    begin
+      aitemno := fields[0].AsInteger;
+      aitemname := fields[1].AsString;
+      vCombox.Items.AddObject(aitemname,TObject(aitemno));
+      next;
+    end;
+    vCombox.ItemIndex := 0;
+  end;
+end;
 
 function DBGridRecordSize(mColumn: TColumn): Boolean;
   {   返回记录数据网格列显示最大宽度是否成功   }
-  begin   
-      Result   :=   False;   
+  begin
+      Result   :=   False;
       if   not   Assigned(mColumn.Field)   then   Exit;   
       mColumn.Field.Tag   :=   Max(mColumn.Field.Tag,   
           TDBGrid(mColumn.Grid).Canvas.TextWidth(mColumn.Field.DisplayText));   
@@ -53,6 +85,7 @@ begin
   //字体格式
   mDBGrid.Font.Size := 12;
   mDBGrid.TitleFont.Size := 12;
+  mDBGrid.Options := [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit];
   //mDBGrid.TitleFont.Style := [fsBold];
   //标题格式化显示
   FormatDisplaylable(Tclientdataset(mDBGrid.datasource.dataset),vFields);

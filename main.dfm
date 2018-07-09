@@ -1,8 +1,8 @@
 object FrmMain: TFrmMain
-  Left = 523
-  Top = 293
-  Width = 1305
-  Height = 730
+  Left = 288
+  Top = 190
+  Width = 674
+  Height = 521
   Caption = #32771#21220#31649#29702#31995#32479
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -27,8 +27,8 @@ object FrmMain: TFrmMain
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1289
-    Height = 671
+    Width = 658
+    Height = 462
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
@@ -43,6 +43,9 @@ object FrmMain: TFrmMain
       end
       object N3: TMenuItem
         Action = actpbsxsz
+      end
+      object N15: TMenuItem
+        Action = ActDeptSet
       end
     end
     object N4: TMenuItem
@@ -137,6 +140,10 @@ object FrmMain: TFrmMain
     object actrestore: TAction
       Caption = #36824#21407
       OnExecute = actrestoreExecute
+    end
+    object ActDeptSet: TAction
+      Caption = #31185#23460#32500#25252
+      OnExecute = ActDeptSetExecute
     end
   end
 end

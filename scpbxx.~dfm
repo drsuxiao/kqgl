@@ -11,8 +11,7 @@ object Frmscpbxx: TFrmscpbxx
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDefault
-  WindowState = wsMaximized
+  Position = poMainFormCenter
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
@@ -98,21 +97,21 @@ object Frmscpbxx: TFrmscpbxx
     object Label3: TLabel
       Left = 11
       Top = 16
-      Width = 36
+      Width = 42
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label2: TLabel
       Left = 326
       Top = 16
-      Width = 12
+      Width = 14
       Height = 13
       Caption = #33267
     end
     object Label1: TLabel
       Left = 211
       Top = 16
-      Width = 36
+      Width = 42
       Height = 13
       Caption = #26085#26399#65306
     end
@@ -122,13 +121,8 @@ object Frmscpbxx: TFrmscpbxx
       Width = 153
       Height = 21
       ItemHeight = 13
-      ItemIndex = 0
       TabOrder = 0
-      Text = #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
       OnChange = cmbdeptChange
-      Items.Strings = (
-        #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
-        #65288#21410#31481#65289#35745#31639#26426#32593#32476#20013#24515)
     end
     object dtfrom: TDateTimePicker
       Left = 241

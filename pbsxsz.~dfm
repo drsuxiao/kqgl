@@ -1,8 +1,8 @@
 object Frmpbsx: TFrmpbsx
-  Left = 499
-  Top = 118
-  Width = 596
-  Height = 568
+  Left = 522
+  Top = 187
+  Width = 323
+  Height = 326
   Caption = #25490#29677#39034#24207#35774#32622
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,126 +13,122 @@ object Frmpbsx: TFrmpbsx
   OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 96
-    Top = 72
-    Width = 84
+    Left = 32
+    Top = 41
+    Width = 70
     Height = 13
-    Caption = #20154#21592#20449#24687#21015#34920#65306
+    Caption = #26410#25490#29677#20154#21592
   end
   object Label2: TLabel
-    Left = 32
-    Top = 24
-    Width = 36
+    Left = 18
+    Top = 13
+    Width = 42
     Height = 13
     Caption = #31185#23460#65306
   end
   object Label3: TLabel
-    Left = 296
-    Top = 72
-    Width = 84
+    Left = 175
+    Top = 41
+    Width = 70
     Height = 13
-    Caption = #25490#29677#20154#21592#21015#34920#65306
+    Caption = #24050#25490#29677#20154#21592
   end
   object ListBox1: TListBox
-    Left = 96
-    Top = 88
-    Width = 137
-    Height = 353
+    Left = 32
+    Top = 57
+    Width = 101
+    Height = 185
     ItemHeight = 13
     TabOrder = 0
   end
   object ListBox2: TListBox
-    Left = 296
-    Top = 88
-    Width = 145
-    Height = 353
+    Left = 175
+    Top = 57
+    Width = 103
+    Height = 183
     ItemHeight = 13
     TabOrder = 1
   end
   object btnadd: TButton
-    Left = 248
-    Top = 160
-    Width = 33
-    Height = 25
+    Left = 141
+    Top = 65
+    Width = 24
+    Height = 24
     Caption = '>'
     TabOrder = 2
     OnClick = btnaddClick
   end
   object btndelete: TButton
-    Left = 248
-    Top = 208
-    Width = 33
-    Height = 25
+    Left = 141
+    Top = 121
+    Width = 24
+    Height = 24
     Caption = '<'
     TabOrder = 3
     OnClick = btndeleteClick
   end
   object btnaddall: TButton
-    Left = 248
-    Top = 272
-    Width = 33
-    Height = 25
+    Left = 141
+    Top = 92
+    Width = 24
+    Height = 24
     Caption = '>>'
     TabOrder = 4
     OnClick = btnaddallClick
   end
   object btndelall: TButton
-    Left = 248
-    Top = 312
-    Width = 33
-    Height = 25
+    Left = 141
+    Top = 147
+    Width = 24
+    Height = 24
     Caption = '<<'
     TabOrder = 5
     OnClick = btndelallClick
   end
   object cmbdept: TComboBox
-    Left = 80
-    Top = 24
+    Left = 58
+    Top = 8
     Width = 177
     Height = 21
     ItemHeight = 13
-    ItemIndex = 0
     TabOrder = 6
-    Text = #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
     OnChange = cmbdeptChange
-    Items.Strings = (
-      #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
-      #65288#21410#31481#65289#35745#31639#26426#32593#32476#20013#24515)
   end
   object btnmoveup: TButton
-    Left = 464
+    Left = 141
     Top = 176
-    Width = 75
-    Height = 25
-    Caption = #19978#31227
+    Width = 24
+    Height = 24
+    Caption = #19978
     TabOrder = 7
     OnClick = btnmoveupClick
   end
   object btnmovedown: TButton
-    Left = 464
-    Top = 224
-    Width = 75
+    Left = 141
+    Top = 203
+    Width = 25
     Height = 25
-    Caption = #19979#31227
+    Caption = #19979
     TabOrder = 8
     OnClick = btnmovedownClick
   end
   object btnsave: TButton
-    Left = 312
-    Top = 480
-    Width = 75
+    Left = 192
+    Top = 249
+    Width = 41
     Height = 25
     Caption = #20445#23384
     TabOrder = 9
     OnClick = btnsaveClick
   end
   object btnclose: TButton
-    Left = 448
-    Top = 480
-    Width = 75
+    Left = 240
+    Top = 249
+    Width = 41
     Height = 25
     Caption = #36864#20986
     ModalResult = 2
@@ -141,11 +137,11 @@ object Frmpbsx: TFrmpbsx
   object cds: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 32
-    Top = 176
+    Left = 80
+    Top = 153
   end
   object dspro: TDataSetProvider
-    Left = 64
-    Top = 176
+    Left = 48
+    Top = 153
   end
 end

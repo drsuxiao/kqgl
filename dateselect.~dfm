@@ -3,8 +3,8 @@ object FrmDateselect: TFrmDateselect
   Top = 308
   BorderStyle = bsDialog
   Caption = #26085#26399#36873#25321
-  ClientHeight = 212
-  ClientWidth = 470
+  ClientHeight = 166
+  ClientWidth = 339
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,40 +13,41 @@ object FrmDateselect: TFrmDateselect
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
-    Left = 241
-    Top = 68
-    Width = 12
+    Left = 209
+    Top = 60
+    Width = 14
     Height = 13
     Caption = #33267
   end
   object Label1: TLabel
-    Left = 80
-    Top = 66
-    Width = 60
+    Left = 47
+    Top = 58
+    Width = 70
     Height = 13
     Caption = #25490#29677#26085#26399#65306
   end
   object Label4: TLabel
-    Left = 51
-    Top = 96
-    Width = 84
+    Left = 19
+    Top = 88
+    Width = 98
     Height = 13
     Caption = #39318#26085#25490#29677#20154#21592#65306
   end
   object Label3: TLabel
-    Left = 104
-    Top = 36
-    Width = 36
+    Left = 72
+    Top = 28
+    Width = 42
     Height = 13
     Caption = #31185#23460#65306
   end
   object dtfrom: TDateTimePicker
-    Left = 148
-    Top = 60
+    Left = 116
+    Top = 52
     Width = 91
     Height = 21
     Date = 42835.928764282410000000
@@ -54,8 +55,8 @@ object FrmDateselect: TFrmDateselect
     TabOrder = 0
   end
   object dtto: TDateTimePicker
-    Left = 257
-    Top = 60
+    Left = 225
+    Top = 52
     Width = 86
     Height = 21
     Date = 42835.928764282410000000
@@ -63,53 +64,48 @@ object FrmDateselect: TFrmDateselect
     TabOrder = 1
   end
   object cbmfirst: TComboBox
-    Left = 148
-    Top = 91
-    Width = 189
+    Left = 116
+    Top = 83
+    Width = 117
     Height = 21
     ItemHeight = 13
     TabOrder = 2
   end
   object Button1: TButton
-    Left = 216
-    Top = 136
-    Width = 75
+    Left = 176
+    Top = 120
+    Width = 57
     Height = 25
     Caption = #30830#23450
     ModalResult = 1
     TabOrder = 3
   end
   object Button2: TButton
-    Left = 312
-    Top = 136
-    Width = 75
+    Left = 248
+    Top = 120
+    Width = 57
     Height = 25
     Caption = #21462#28040
     ModalResult = 2
     TabOrder = 4
   end
   object cmbdept: TComboBox
-    Left = 149
-    Top = 28
-    Width = 177
+    Left = 117
+    Top = 20
+    Width = 188
     Height = 21
     ItemHeight = 13
-    ItemIndex = 0
     TabOrder = 5
-    Text = #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
     OnChange = cmbdeptChange
-    Items.Strings = (
-      #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
-      #65288#21410#31481#65289#35745#31639#26426#32593#32476#20013#24515)
   end
   object cds: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 104
-    Top = 136
+    Left = 72
+    Top = 128
   end
   object dspro: TDataSetProvider
-    Left = 136
-    Top = 136
+    Left = 104
+    Top = 128
   end
 end

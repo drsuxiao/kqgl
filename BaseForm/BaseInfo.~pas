@@ -53,16 +53,19 @@ uses DM,publicrule,BaseInfoRule;
 procedure TFormBaseInfo.btnnewClick(Sender: TObject);
 begin
   BaseInfoRule.New(Insertsql);
+  refresh;
 end;  
 
 procedure TFormBaseInfo.btnmodifyClick(Sender: TObject);
 begin
   BaseInfoRule.Edit(Editsql);
+  refresh;
 end;
 
 procedure TFormBaseInfo.btndeleteClick(Sender: TObject);
 begin
   BaseInfoRule.Delete(Deletesql);
+  refresh;
 end;
 
 procedure TFormBaseInfo.btncloseClick(Sender: TObject);
@@ -72,8 +75,8 @@ end;
 
 procedure TFormBaseInfo.btnqueryClick(Sender: TObject);
 begin
-  BaseInfoRule.Query(Querysql);
-
+  //BaseInfoRule.Query(Querysql);
+  refresh;
   cds.Filter := FilterSql;
   cds.FilterOptions := [foCaseInsensitive];
   cds.Filtered := true;
@@ -90,8 +93,6 @@ begin
 end;
 
 procedure TFormBaseInfo.FormShow(Sender: TObject);
-var
-  i: integer;
 begin
 ;
 end;

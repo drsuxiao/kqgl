@@ -22,6 +22,7 @@ type
     dspro: TDataSetProvider;
     procedure FormShow(Sender: TObject);
     procedure cmbdeptChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure additems;
@@ -33,15 +34,15 @@ var
   FrmDateselect: TFrmDateselect;
 
 implementation
-uses DateUtils,dm;
+uses DateUtils,dm,PublicRule;
 {$R *.dfm}
 
 procedure TFrmDateselect.additems;
 var
   asql: string;
 begin
-  asql := format('select code+name from ryxx where ifpb=1 and deptcode=''%s'' order by xh'
-                 ,[inttostr(cmbdept.ItemIndex)]);
+  asql := format('select t.code,e.name,t.deptcode from xh t left join employee e on t.code=e.code where t.deptcode=''%s'' order by t.sqno'
+                 ,[PublicRule.GetComboxItemNo(cmbdept)]);
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
@@ -51,7 +52,7 @@ begin
   cbmfirst.Text := '';
   while not cds.Eof do
   begin
-    cbmfirst.Items.Add(cds.Fields[0].AsString);
+    cbmfirst.Items.Add(cds.Fields[0].AsString +' '+ cds.Fields[1].AsString);
     cds.Next;
   end;
 end;
@@ -67,6 +68,11 @@ end;
 procedure TFrmDateselect.cmbdeptChange(Sender: TObject);
 begin
   additems;
+end;
+
+procedure TFrmDateselect.FormCreate(Sender: TObject);
+begin
+  publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
 end;
 
 end.

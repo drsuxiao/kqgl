@@ -1,32 +1,30 @@
 unit BaseInfoRule;
 
 interface
-uses windows;
+uses windows, dm;
 
-function New(vSql: String): Integer;
-function Edit(vSql: String): Integer;
-function Delete(vSql: String):Integer;
-function Query(vSql: String):Integer;
+function New(vSql: String): boolean;
+function Edit(vSql: String): boolean;
+function Delete(vSql: String):boolean;
+function Query(vSql: String):boolean;
   
 implementation
 
-function New(vSql: String): Integer;
+function New(vSql: String): boolean;
 begin
-  result := 0;
+  result := dm.ExecuteSql(vSql);
 end;
-function Edit(vSql: String): Integer;
+function Edit(vSql: String): boolean;
 begin
-  result := 0;
+  result := dm.ExecuteSql(vSql);
 end;
-function Delete(vSql: String):Integer;
+function Delete(vSql: String):boolean;
 begin
-  result := 0;
+  result := dm.ExecuteSql(vSql);
 end;
-function Query(vSql: String):Integer;
+function Query(vSql: String):boolean;
 begin
-  result := 0;
+  result := dm.ExecuteSql(vSql);
 end;
-
-
 
 end.

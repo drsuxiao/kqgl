@@ -28,6 +28,7 @@ type
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DBGrid1TitleClick(Column: TColumn);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,12 +47,10 @@ var
   adt,asql: string;
 begin
   adt := trim(cmbyear.Text)+'-'+trim(cmbmonth.Text);
-  if cmbdept.ItemIndex > 1 then
-    asql := format('select deptcode, rq, ygbm,name, zbcs from view_zbcstj where rq = ''%s'' order by deptcode,rq'
-                                        ,[adt])
-  else
-    asql := format('select deptcode, rq, ygbm,name, zbcs from view_zbcstj where deptcode=''%s'' and rq = ''%s'' order by deptcode,rq'
-                                        ,[inttostr(cmbdept.ItemIndex),adt]);
+  asql := format('exec pro_cal_zbdays ''%s'',''%s'' ',[trim(cmbyear.Text),trim(cmbmonth.Text)]);
+  dm.ExecuteSql(asql);
+  asql := format('select deptcode, rq, ygbm,name, zbcs from view_zbcstj where deptcode=''%s'' and rq = ''%s'' order by deptcode,rq'
+                                        ,[publicrule.GetComboxItemNo(cmbdept),adt]);
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
@@ -83,6 +82,11 @@ end;
 procedure Tfrmzbcstj.DBGrid1TitleClick(Column: TColumn);
 begin
   cds.IndexFieldNames:=column.Field.FieldName;
+end;
+
+procedure Tfrmzbcstj.FormCreate(Sender: TObject);
+begin
+  publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
 end;
 
 end.

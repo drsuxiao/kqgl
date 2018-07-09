@@ -1,6 +1,6 @@
 object frmzbcstj: Tfrmzbcstj
-  Left = 376
-  Top = 212
+  Left = 448
+  Top = 237
   Width = 552
   Height = 368
   Caption = #20540#29677#27425#25968#32479#35745
@@ -12,6 +12,7 @@ object frmzbcstj: Tfrmzbcstj
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -51,28 +52,28 @@ object frmzbcstj: Tfrmzbcstj
     object Label4: TLabel
       Left = 429
       Top = 16
-      Width = 12
+      Width = 14
       Height = 13
       Caption = #26376
     end
     object Label1: TLabel
       Left = 14
       Top = 16
-      Width = 36
+      Width = 42
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label2: TLabel
       Left = 241
       Top = 16
-      Width = 36
+      Width = 42
       Height = 13
       Caption = #26085#26399#65306
     end
     object Label3: TLabel
       Left = 343
       Top = 16
-      Width = 12
+      Width = 14
       Height = 13
       Caption = #24180
     end
@@ -82,13 +83,7 @@ object frmzbcstj: Tfrmzbcstj
       Width = 177
       Height = 21
       ItemHeight = 13
-      ItemIndex = 0
       TabOrder = 0
-      Text = #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
-      Items.Strings = (
-        #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
-        #65288#21410#31481#65289#35745#31639#26426#32593#32476#20013#24515
-        #20840#37096)
     end
     object cmbyear: TComboBox
       Left = 281

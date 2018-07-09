@@ -31,6 +31,7 @@ type
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DBGrid1TitleClick(Column: TColumn);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure refresh;
@@ -63,12 +64,8 @@ begin
     awhere := ''
   else
     awhere := format(' and type=''%s'' ',[copy(cmbtype.Text,1,2)]);
-  if cmbdept.ItemIndex > 1 then
-    asql := format('select * from (select ygbm,name,type,typename,sum(days) as days from (select * from view_kqhours where startdate >= ''%s'' and stopdate <=''%s'' %s) as a group by ygbm,name,type,typename ) as b order by ygbm,type'
-                                        ,[adt1,adt2,awhere])
-  else
-    asql := format('select * from (select ygbm,name,type,typename,sum(days) as days from (select * from view_kqhours where deptcode=''%s'' and startdate >= ''%s'' and stopdate <=''%s'' %s) as a group by ygbm,name,type,typename ) as b order by ygbm,type'
-                                        ,[inttostr(cmbdept.ItemIndex),adt1,adt2,awhere]);
+  asql := format('select * from (select ygbm,name,type,typename,sum(days) as days from (select * from view_kqhours where deptcode=''%s'' and startdate >= ''%s'' and stopdate <=''%s'' %s) as a group by ygbm,name,type,typename ) as b order by ygbm,type'
+                                        ,[publicrule.GetComboxItemNo(cmbdept),adt1,adt2,awhere]);
 
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.data;
@@ -96,6 +93,11 @@ end;
 procedure Tfrmkqflhz.DBGrid1TitleClick(Column: TColumn);
 begin
   cds.IndexFieldNames:=column.Field.FieldName;
+end;
+
+procedure Tfrmkqflhz.FormCreate(Sender: TObject);
+begin
+  publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
 end;
 
 end.

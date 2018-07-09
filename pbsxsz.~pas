@@ -34,8 +34,13 @@ type
     procedure btnsaveClick(Sender: TObject);
     procedure cmbdeptChange(Sender: TObject);
     procedure refresh;
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    FDeptCode: string;
+    procedure InitEmployeelist();
+    procedure InitRightlist();
+    function GetDonelist(vDeptcode: string): string;
   public
     { Public declarations }
   end;
@@ -44,12 +49,13 @@ var
   Frmpbsx: TFrmpbsx;
 
 implementation
-uses DM;
+uses DM,PublicRule;
 {$R *.dfm}
 
 procedure TFrmpbsx.FormCreate(Sender: TObject);
 begin
-  refresh;
+  PublicRule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
+  FDeptcode := PublicRule.GetComboxItemNo(cmbdept);
 end;
 
 procedure TFrmpbsx.btnaddClick(Sender: TObject);
@@ -137,25 +143,18 @@ var
   i,j: integer;
   asql: string;
 begin
-  if listbox1.Items.Count > 0 then
-  begin
-    j := listbox1.Items.Count;
-    for i:= 0 to j - 1 do
-    begin
-      asql := asql + ' ' +  format('update ryxx set ifpb=0,xh=%d where deptcode=''%s'' and code = ''%s''',[i+1,inttostr(cmbdept.ItemIndex),copy(listbox1.Items.Strings[i],0,6)]);
-    end;
-  end;
+  asql := format('delete from xh where deptcode=''%s'' ',[FDeptcode]);
   if listbox2.Items.Count > 0 then
   begin
     j := listbox2.Items.Count;
     for i:= 0 to j - 1 do
     begin
-      asql := asql + ' ' +  format('update ryxx set ifpb=1,xh=%d where deptcode=''%s'' and  code = ''%s''',[i+1,inttostr(cmbdept.ItemIndex),copy(listbox2.Items.Strings[i],0,6)]);
+      asql := asql + ' ' +  format('insert into xh(code,deptcode,sqno) values(''%s'',''%s'',%d) ',[copy(listbox2.Items.Strings[i],0,6),FDeptcode,i+1]);
     end;
   end;
   try
-    if dm.ExecuteSql(asql) then
-      showmessage('保存成功！');
+  if dm.ExecuteSql(asql) then
+    showmessage('保存成功！');
   except
 
   end;
@@ -167,28 +166,77 @@ begin
 end;
 
 procedure TFrmpbsx.refresh;
+begin
+  FDeptcode := PublicRule.GetComboxItemNo(cmbdept);
+  InitEmployeelist;
+  InitRightlist;
+end;
+
+procedure TFrmpbsx.FormShow(Sender: TObject);
+begin
+  refresh;
+end;
+
+procedure TFrmpbsx.InitEmployeelist;
 var
   astr: string;
   asql: string;
 begin
-  asql := format('select id, code, name, deptcode, xh, ifpb from ryxx where deptcode=''%s'' order by deptcode,xh '
-                             ,[inttostr(cmbdept.ItemIndex)]);
+  asql := format('select code, name, deptcode from employee where deptcode=''%s'' and code not in(%s) '
+                             ,[FDeptcode,self.GetDonelist(FDeptcode)]);
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
 
   cds.First;
   listbox1.Items.Clear;
+  while not cds.Eof do
+  begin
+    astr := cds.FieldByName('code').AsString +'  '+ cds.FieldByName('name').AsString;
+    listbox1.Items.Add(astr);
+    cds.Next;
+  end;
+end;
+
+procedure TFrmpbsx.InitRightlist;
+var
+  astr: string;
+  asql: string;
+begin
+  asql := format('select t.code,e.name from (select code,deptcode,sqno from xh where deptcode=''%s'') t left join employee e on t.code=e.code order by t.sqno'
+                             ,[FDeptcode]);
+  dspro.DataSet := dm.GetDataSet(asql);
+  cds.Data := dspro.Data;
+  cds.Active := true;
+
+  cds.First;
   listbox2.Items.Clear;
   while not cds.Eof do
   begin
-    astr := cds.FieldByName('code').AsString +','+ cds.FieldByName('name').AsString;
-    if cds.FieldByName('ifpb').AsBoolean then
-      listbox2.Items.Add(astr)
-    else
-      listbox1.Items.Add(astr);
+    astr := cds.FieldByName('code').AsString +'  '+ cds.FieldByName('name').AsString;
+    listbox2.Items.Add(astr);
     cds.Next;
   end;
+end;
+
+function TFrmpbsx.GetDonelist(vDeptcode: string): string;
+var
+  astr: string;
+  asql: string;
+begin
+  asql := format('select code, deptcode,sqno from xh where deptcode=''%s'' ',[vDeptcode]);
+  dspro.DataSet := dm.GetDataSet(asql);
+  cds.Data := dspro.Data;
+  cds.Active := true;
+
+  cds.First;
+  astr := '1';
+  while not cds.Eof do
+  begin
+    astr := astr + ',' + cds.FieldByName('code').AsString;
+    cds.Next;
+  end;
+  result := astr;
 end;
 
 end.

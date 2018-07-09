@@ -125,7 +125,7 @@ begin
     DBIniFile := TIniFile.Create(iniFile);  
     ConnectionName := DBIniFile.ReadString('Connection','ConnectionName', 'SQLConnection');  
     DriverName := DBIniFile.ReadString('Connection','DriverName', 'MSDASQL');  
-    ProviderName := DBIniFile.ReadString('Connection','ProviderName', 'MSDASQL');  
+    ProviderName := DBIniFile.ReadString('Connection','ProviderName', 'SQLOLEDB.1');  
     DBServer:= DBIniFile.ReadString('Connection','DBServer', '127.0.0.1');  
     HostName := DBIniFile.ReadString('Connection','HostName', '127.0.0.1');  
     DataBase := DBIniFile.ReadString('Connection','DataBase', 'mydata');  

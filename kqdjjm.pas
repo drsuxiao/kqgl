@@ -38,6 +38,7 @@ type
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure DBGrid1TitleClick(Column: TColumn);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     function execute(vSql: string): boolean;
@@ -68,7 +69,7 @@ begin
   begin
     aygbm := copy(aform.cmbname.Text,1,6);
     atype := copy(aform.cmbtype.Text,1,2);
-    adept := inttostr(aform.cmbdept.itemindex);
+    adept := publicrule.GetComboxItemNo(cmbdept);
     anow := formatdatetime('yyyy-mm-dd',now);
     astdate := formatdatetime('yyyy-mm-dd',aform.dtfrom.datetime);
     aspdate := formatdatetime('yyyy-mm-dd',aform.dtto.datetime);
@@ -92,18 +93,18 @@ procedure Tfrmkqdjjm.refresh;
 var
   asql,adept,astdate,aspdate: string;
 begin
-  adept := inttostr(cmbdept.ItemIndex);
+  adept := publicrule.GetComboxItemNo(cmbdept);
   astdate := formatdatetime('yyyy-mm-dd',dtfrom.datetime);
   aspdate := formatdatetime('yyyy-mm-dd',dtto.datetime);
-  if adept='2' then
-    asql := format('select * from view_kqdj where (startdate >= ''%s'' and startdate <=''%s'') or (stopdate >= ''%s'' and stopdate <=''%s'')',[astdate,aspdate,astdate,aspdate])
-  else
+  //if adept='2' then
+  //  asql := format('select * from view_kqdj where (startdate >= ''%s'' and startdate <=''%s'') or (stopdate >= ''%s'' and stopdate <=''%s'')',[astdate,aspdate,astdate,aspdate])
+  //else   id,ygbm,name,type,typename,startdate,starttime,stopdate,stoptime, djdate,deptcode,deptname, memo
     asql := format('select * from view_kqdj where deptcode=''%s'' and ((startdate >= ''%s'' and startdate <=''%s'') or (stopdate >= ''%s'' and stopdate <=''%s''))',[adept,astdate,aspdate,astdate,aspdate]);
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
   //数据表格显示，列宽初始化
-  Initdbgrid(DBGrid1,'序号,工资编码,类型编码,类型名称,姓名,开始日期,开始时间,结束日期,结束时间,登记日期,科室,备注');
+  Initdbgrid(DBGrid1,'序号,工资编码,姓名,类型编码,类型名称,开始日期,开始时间,结束日期,结束时间,登记日期,科室编号,科室名称,备注');
 end;
 
 procedure Tfrmkqdjjm.btnmodifyClick(Sender: TObject);
@@ -129,7 +130,7 @@ begin
   asttime := trim(cds.fieldbyname('starttime').AsString);
   asptime := trim(cds.fieldbyname('stoptime').AsString);
   amemo := trim(cds.fieldbyname('memo').AsString);
-  aform.cmbdept.ItemIndex := strtoint(adept);
+  aform.cmbdept.ItemIndex := aform.cmbdept.Items.IndexOfObject(tobject(strtoint(adept)));
   aform.cmbdeptChange(nil);
   aform.cmbname.ItemIndex := aform.cmbname.Items.IndexOf(aygbm+','+aname);
   aform.cmbtype.ItemIndex := aform.cmbtype.Items.IndexOf(atype+','+atypename);
@@ -175,7 +176,7 @@ procedure Tfrmkqdjjm.FormShow(Sender: TObject);
 begin
   dtfrom.DateTime := StartOfTheMonth(now);
   dtto.DateTime := EndOfTheMonth(now);
-  cmbdept.ItemIndex := 2;
+  //cmbdept.ItemIndex := 2;
   //refresh;
 end;
 
@@ -199,6 +200,11 @@ end;
 procedure Tfrmkqdjjm.DBGrid1TitleClick(Column: TColumn);
 begin
   cds.IndexFieldNames:=column.Field.FieldName;
+end;
+
+procedure Tfrmkqdjjm.FormCreate(Sender: TObject);
+begin
+  publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
 end;
 
 end.

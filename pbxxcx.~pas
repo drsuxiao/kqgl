@@ -31,6 +31,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     function GetTheWeek(vDateTime: Tdatetime): integer;
@@ -58,7 +59,7 @@ var
   ayear,ayear1 : string;
   str: string;
 begin
-  adept := inttostr(cmbdept.ItemIndex);
+  adept := publicrule.GetComboxItemNo(cmbdept);
   adt1 := formatdatetime('yyyy-mm-dd',dtfrom.DateTime);
   adt2 := formatdatetime('yyyy-mm-dd',dtto.DateTime);
   ayear := inttostr(yearof(dtfrom.DateTime));
@@ -136,7 +137,6 @@ procedure Tfrmpbxxquery.FormShow(Sender: TObject);
 begin
   dtfrom.DateTime := StartOfTheMonth(now);
   dtto.DateTime := EndOfTheMonth(now);
-  cmbdept.ItemIndex := 0;
 end;
 
 procedure Tfrmpbxxquery.DBGrid1DrawColumnCell(Sender: TObject;
@@ -160,6 +160,11 @@ begin
 
   DbGrid1.Canvas.pen.mode:=pmMask;
   DbGrid1.DefaultDrawColumnCell(Rect,datacol,column,state);   }
+end;
+
+procedure Tfrmpbxxquery.FormCreate(Sender: TObject);
+begin
+  publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
 end;
 
 end.

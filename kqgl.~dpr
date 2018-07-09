@@ -20,12 +20,17 @@ uses
   BaseInfo in 'BaseForm\BaseInfo.pas' {FormBaseInfo},
   BaseInfoRule in 'BaseForm\BaseInfoRule.pas',
   SQLADOPoolUnit in 'SQLADOPoolUnit.pas',
-  test in 'test.pas' {Form1};
+  test in 'test.pas' {Form1},
+  DeptSet in 'DeptSet.pas' {FormDept},
+  DeptEdit in 'DeptEdit.pas' {FormDeptedit};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFrmMain, FrmMain);
+  Application.CreateForm(TFormDeptedit, FormDeptedit);
   Application.Run;
 end.
+
+

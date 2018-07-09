@@ -12,6 +12,7 @@ object frmkqdjjm: Tfrmkqdjjm
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -96,40 +97,36 @@ object frmkqdjjm: Tfrmkqdjjm
     object Label3: TLabel
       Left = 7
       Top = 17
-      Width = 36
+      Width = 42
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label2: TLabel
-      Left = 306
+      Left = 342
       Top = 17
-      Width = 12
+      Width = 14
       Height = 13
       Caption = #33267
     end
     object Label1: TLabel
-      Left = 191
+      Left = 227
       Top = 17
-      Width = 36
+      Width = 42
       Height = 13
       Caption = #26085#26399#65306
     end
     object cmbdept: TComboBox
       Left = 47
       Top = 13
-      Width = 138
+      Width = 170
       Height = 21
       ItemHeight = 13
-      ItemIndex = 0
       TabOrder = 0
-      Text = #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
       Items.Strings = (
-        #65288#26032#38451#65289#35745#31639#26426#32593#32476#20013#24515
-        #65288#21410#31481#65289#35745#31639#26426#32593#32476#20013#24515
-        #20840#37096)
+        '')
     end
     object dtfrom: TDateTimePicker
-      Left = 221
+      Left = 257
       Top = 13
       Width = 81
       Height = 21
@@ -138,7 +135,7 @@ object frmkqdjjm: Tfrmkqdjjm
       TabOrder = 1
     end
     object dtto: TDateTimePicker
-      Left = 319
+      Left = 355
       Top = 13
       Width = 81
       Height = 21
@@ -147,7 +144,7 @@ object frmkqdjjm: Tfrmkqdjjm
       TabOrder = 2
     end
     object btnquery: TButton
-      Left = 407
+      Left = 443
       Top = 11
       Width = 50
       Height = 25
@@ -156,7 +153,7 @@ object frmkqdjjm: Tfrmkqdjjm
       OnClick = btnqueryClick
     end
     object Button2: TButton
-      Left = 463
+      Left = 499
       Top = 11
       Width = 66
       Height = 25

@@ -3,7 +3,7 @@ object Frmryxx: TFrmryxx
   Top = 200
   Width = 393
   Height = 493
-  Caption = #20154#21592#20449#24687#32500#25252
+  Caption = '人员信息维护'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -36,14 +36,14 @@ object Frmryxx: TFrmryxx
         Top = 16
         Width = 60
         Height = 13
-        Caption = #24037#36164#32534#21495#65306
+        Caption = '工资编号：'
       end
       object btnquery: TButton
         Left = 224
         Top = 16
         Width = 57
         Height = 25
-        Caption = #26597#35810
+        Caption = '查询'
         TabOrder = 0
         OnClick = btnqueryClick
       end
@@ -70,6 +70,7 @@ object Frmryxx: TFrmryxx
         Height = 367
         Align = alClient
         DataSource = DataSource1
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -93,7 +94,7 @@ object Frmryxx: TFrmryxx
         Top = 8
         Width = 49
         Height = 25
-        Caption = #26032#22686
+        Caption = '新增'
         TabOrder = 0
         OnClick = btnnewClick
       end
@@ -102,7 +103,7 @@ object Frmryxx: TFrmryxx
         Top = 8
         Width = 49
         Height = 25
-        Caption = #20462#25913
+        Caption = '修改'
         TabOrder = 1
         OnClick = btnmodifyClick
       end
@@ -111,7 +112,7 @@ object Frmryxx: TFrmryxx
         Top = 8
         Width = 49
         Height = 25
-        Caption = #21024#38500
+        Caption = '删除'
         TabOrder = 2
         OnClick = btndeleteClick
       end
@@ -120,7 +121,7 @@ object Frmryxx: TFrmryxx
         Top = 8
         Width = 52
         Height = 25
-        Caption = #36864#20986
+        Caption = '退出'
         TabOrder = 3
         OnClick = btncloseClick
       end

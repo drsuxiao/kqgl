@@ -68,7 +68,7 @@ var
   aweek: string;
   i,j: integer;
   aform: TFrmDateselect;
-  afirst,adept: integer;
+  afirst,adept: string;
 begin
   aform := TFrmDateselect.Create(nil);
   aform.Label4.Visible := true;
@@ -81,10 +81,15 @@ begin
 
   adt1 := aform.dtfrom.DateTime;
   adt2 := aform.dtto.DateTime;
-  adept := aform.cmbdept.ItemIndex;
-  afirst := aform.cbmfirst.ItemIndex+1;
+  adept := publicrule.GetComboxItemNo(cmbdept);
+  afirst := copy(trim(aform.cbmfirst.Items.Text),1,6);
 
   if adt2-adt1 < 0 then exit;
+  //执行存储过程
+  asql := format('exec pro_create_schedule ''%s'',''%s'',''%s'',''%s'' '
+   ,[FormatdateTime('yyyy-mm-dd',adt1),FormatdateTime('yyyy-mm-dd',adt2),afirst,adept]);
+   dm.ExecuteSql(asql);
+  {
   //日期重复性检测
   if IfOnlyCheck(inttostr(adept),FormatdateTime('yyyy-mm-dd',adt1),FormatdateTime('yyyy-mm-dd',adt2)) then
   begin
@@ -114,7 +119,7 @@ begin
     refresh;
   end else
     showmessage('生成排班表失败！');
-  aform.Free;
+  aform.Free; }
 end;
 
 procedure TFrmscpbxx.CheckBox1Click(Sender: TObject);
@@ -161,7 +166,7 @@ begin
   FList2 := Tstringlist.Create;
   dtfrom.DateTime := StartOfTheMonth(now);
   dtto.DateTime := EndOfTheMonth(now);
-  cmbdept.ItemIndex := 0;
+  publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
   //refresh;
 end;
 
@@ -171,12 +176,12 @@ var
 begin
   adt1 := formatdatetime('yyyy-mm-dd',dtfrom.DateTime);
   adt2 := formatdatetime('yyyy-mm-dd',dtto.DateTime);
-  asql := format('select id,rq,deptcode,deptname,ifmodify,ygbm,name,week,weekname,xh from view_pbxx where deptcode=''%s'' and rq >= ''%s'' and rq <=''%s'' order by deptcode,rq'
-                                        ,[inttostr(cmbdept.ItemIndex),adt1,adt2]);
+  asql := format('select id,rq,deptcode,deptname,ifmodify,ygbm,name,week,weekname from view_pbxx where deptcode=''%s'' and rq >= ''%s'' and rq <=''%s'' order by deptcode,rq'
+                                        ,[publicrule.GetComboxItemNo(cmbdept),adt1,adt2]);
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
-  Initdbgrid(DBGrid1,'ID,日期,部门编码,部门名称,是否修改,工资编号,姓名,第几天,星期,序号');
+  Initdbgrid(DBGrid1,'ID,日期,部门编码,部门名称,是否修改,工资编号,姓名,第几天,星期');
 end;
 
 procedure TFrmscpbxx.cmbdeptChange(Sender: TObject);
@@ -195,7 +200,7 @@ begin
   if aform.ShowModal = mrOk then
   begin
     asql := format('delete from daylist where deptcode=''%s'' and rq >=''%s'' and rq <= ''%s'''
-                  ,[inttostr(aform.cmbdept.ItemIndex),formatdatetime('yyyy-mm-dd',aform.dtfrom.DateTime),formatdatetime('yyyy-mm-dd',aform.dtto.DateTime)]);
+                  ,[publicrule.GetComboxItemNo(cmbdept),formatdatetime('yyyy-mm-dd',aform.dtfrom.DateTime),formatdatetime('yyyy-mm-dd',aform.dtto.DateTime)]);
     if Execute(asql) then
       refresh;
   end;
@@ -222,7 +227,7 @@ begin
     aoldcode := copy(trim(aform.edtold.Text),1,6);
     acode := copy(trim(aform.cmbnew.Text),1,6);
     arq := formatdatetime('yyyy-mm-dd',aform.dtrq.datetime);
-    adept := inttostr(aform.cmbdept.itemindex);
+    adept := publicrule.GetComboxItemNo(aform.cmbdept);
     asql := format('update daylist set ifmodify=1,ygbm=''%s'' where rq=''%s'' and deptcode=''%s'' and ygbm=''%s'' ',[acode,arq,adept,aoldcode]);
     arq := formatdatetime('yyyy-mm-dd',incday(aform.dtrq.datetime));
     asql := asql + format(' update daylist set xxygbm=''%s'' where rq=''%s'' and deptcode=''%s'' ',[acode,arq,adept]);

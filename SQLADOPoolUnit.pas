@@ -424,7 +424,7 @@ end;
 initialization  
   //ini文件后缀更名为LXH，方便远程安全下载更新  
   ADOConfig := TADOConfig.Create(ExtractFilePath(ParamStr(0))+'SERVERDB.LXH');  
-  ADOPool := TADOPool.Create(15);  
+  ADOPool := TADOPool.Create(5);
 finalization  
   if Assigned(ADOPool) then ADOPool.Free;  
   if Assigned(ADOConfig) then ADOConfig.Free;  

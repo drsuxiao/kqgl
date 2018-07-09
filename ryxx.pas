@@ -67,7 +67,12 @@ begin
     aform.rdbtn.Caption := cds.FieldValues['id'];
     aform.edtrybh.Text := cds.FieldValues['code'];
     aform.edtryxm.Text := cds.FieldValues['name'];
-    aform.cmbksmc.ItemIndex := cds.FieldValues['deptcode'];
+    aform.cbsex.ItemIndex := cds.FieldValues['sex'];
+    aform.cmbksmc.ItemIndex := aform.cmbksmc.Items.IndexOfObject(tobject(cds.FieldByName('deptcode').AsInteger));
+    if cds.FieldValues['workdate'] <> null then
+      aform.dtworkdate.Date := strtodatedef(cds.FieldValues['workdate'],strtodate('2018-01-01'));
+    if cds.FieldValues['birthday'] <> null then
+      aform.dtbirthday.Date := strtodatedef(cds.FieldValues['birthday'],strtodate('2018-01-01'));
     if aform.ShowModal = 1 then
       refresh;
   except
@@ -81,7 +86,7 @@ var
 begin
   if (cds.RecordCount > 0) and (MessageBox(0,'确定删除当前用户？','提示', mb_okcancel)=1) then
   begin
-    asql := format('delete from ryxx where id=''%s''',[cds.FieldValues['id']]);
+    asql := format('delete from employee where id=''%s''',[cds.FieldValues['id']]);
     dm.ExecuteSql(asql);
     refresh;
   end;
@@ -111,12 +116,12 @@ var
   asql : string;
 begin
   cds.Active := false;
-  asql := 'select id, code, name, deptcode from ryxx';
+  asql := 'SELECT e.id,e.code,e.name,e.sex,e.deptcode,d.deptname,e.workdate,e.birthday FROM employee e left join department d on e.deptcode=d.deptcode';
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
   //数据表格显示，列宽初始化
-  InitDBGrid(DBGrid1,'编号,工资号,姓名,科室');
+  InitDBGrid(DBGrid1,'编号,工资号,姓名,性别,科室编号,科室名称,工作日期,出生日期');
 end;
 
 procedure TFrmryxx.FormShow(Sender: TObject);
