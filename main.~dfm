@@ -1,8 +1,8 @@
 object FrmMain: TFrmMain
   Left = 288
   Top = 190
-  Width = 1305
-  Height = 730
+  Width = 674
+  Height = 521
   Caption = #32771#21220#31649#29702#31995#32479
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -27,8 +27,8 @@ object FrmMain: TFrmMain
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1289
-    Height = 671
+    Width = 658
+    Height = 462
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
