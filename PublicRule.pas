@@ -7,7 +7,7 @@ uses  Windows, SysUtils, Classes, DBClient,DBGrids,Dialogs,ComObj,Graphics,math,
 //格式化字段名称
 procedure FormatDisplaylable(vDataSet: Tclientdataset; vFields: string);
 //导出Excel方法
-procedure DBGridExport(GRID:TDBGRID);
+procedure DBGridExport(GRID:TDBGRID;vFileName:string='');
 //返回记录数据网格列显示最大宽度是否成功
 function DBGridRecordSize(mColumn: TColumn): Boolean;
 //返回数据网格自动适应宽度是否成功
@@ -15,25 +15,27 @@ function DBGridAutoSize(mDBGrid: TDBGrid;mOffset: Integer = 10): Boolean;
 //初始化表格的font style
 procedure InitDBGrid(mDBGrid: TDBGrid; vFields: string='');
 //初始化科室列表
-procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox);
+procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox;vSortField: string='');
 function GetComboxItemNo(vCombox: TComboBox): string;
 implementation
 uses dm,Variants;
 
 function GetComboxItemNo(vCombox: TComboBox): string;
 begin
-  result := inttostr(Integer(vCombox.Items.Objects[vCombox.ItemIndex]))
+  result := inttostr(Integer(vCombox.Items.Objects[vCombox.ItemIndex]));
 end;
 
-procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox);
+procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox;vSortField: string='');
 var
   aitemname: string;
   aitemno: integer;
   alist: Tstringlist;
   asql: string;
 begin
+  if vSortField='' then
+    vSortField := vCode;
   vCombox.Items.Clear;
-  asql := format('select %s,%s from %s order by %s',[vCode,vName,vTabelName,vCode]);
+  asql := format('select %s,%s from %s order by %s',[vCode,vName,vTabelName,vSortField]);
   with dm.GetDataSet(asql) do
   begin
     if recordcount = 0 then exit;
@@ -105,7 +107,7 @@ begin
     vDataSet.Fields[i].DisplayLabel := alist[i];
 end;
 
-procedure DBGridExport(GRID:TDBGRID);  
+procedure DBGridExport(GRID:TDBGRID;vFileName:string='');  
 var       //DBGRID控件内容存储到EXCEL 只有第一行有标题
     EclApp:Variant;
     XlsFileName:String;
@@ -116,7 +118,7 @@ var       //DBGRID控件内容存储到EXCEL 只有第一行有标题
 begin
    savedailog:=TSaveDialog.Create(nil);
    savedailog.Filter:='Excel files (*.xls)|*.XlS';
-   savedailog.FileName := '考勤分类汇总.xls';
+   savedailog.FileName := vFileName;
    if savedailog.Execute then begin
         xlsfilename:=savedailog.FileName;
         savedailog.Free;

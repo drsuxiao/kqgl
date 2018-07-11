@@ -81,8 +81,8 @@ begin
 
   adt1 := aform.dtfrom.DateTime;
   adt2 := aform.dtto.DateTime;
-  adept := publicrule.GetComboxItemNo(cmbdept);
-  afirst := copy(trim(aform.cbmfirst.Items.Text),1,6);
+  adept := publicrule.GetComboxItemNo(cmbdept);     
+  afirst := copy(trim(aform.cbmfirst.Items[aform.cbmfirst.ItemIndex]),1,6);  //获取当前选择的内容
 
   if adt2-adt1 < 0 then exit;
   //执行存储过程

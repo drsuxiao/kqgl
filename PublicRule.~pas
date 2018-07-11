@@ -15,27 +15,30 @@ function DBGridAutoSize(mDBGrid: TDBGrid;mOffset: Integer = 10): Boolean;
 //初始化表格的font style
 procedure InitDBGrid(mDBGrid: TDBGrid; vFields: string='');
 //初始化科室列表
-procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox);
+procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox;vSortField: string='');
 function GetComboxItemNo(vCombox: TComboBox): string;
 implementation
 uses dm,Variants;
 
 function GetComboxItemNo(vCombox: TComboBox): string;
 begin
-  result := inttostr(Integer(vCombox.Items.Objects[vCombox.ItemIndex]))
+  result := inttostr(Integer(vCombox.Items.Objects[vCombox.ItemIndex]));
 end;
 
-procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox);
+procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox;vSortField: string='');
 var
   aitemname: string;
   aitemno: integer;
   alist: Tstringlist;
   asql: string;
 begin
+  if vSortField='' then
+    vSortField := vCode;
   vCombox.Items.Clear;
-  asql := format('select %s,%s from %s order by %s',[vCode,vName,vTabelName,vCode]);
+  asql := format('select %s,%s from %s order by %s',[vCode,vName,vTabelName,vSortField]);
   with dm.GetDataSet(asql) do
   begin
+    if recordcount = 0 then exit;
     while not eof do
     begin
       aitemno := fields[0].AsInteger;
@@ -43,6 +46,7 @@ begin
       vCombox.Items.AddObject(aitemname,TObject(aitemno));
       next;
     end;
+    vCombox.ItemIndex := 0;
   end;
 end;
 

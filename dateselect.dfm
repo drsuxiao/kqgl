@@ -20,28 +20,28 @@ object FrmDateselect: TFrmDateselect
   object Label2: TLabel
     Left = 209
     Top = 60
-    Width = 14
+    Width = 12
     Height = 13
     Caption = #33267
   end
   object Label1: TLabel
     Left = 47
     Top = 58
-    Width = 70
+    Width = 60
     Height = 13
     Caption = #25490#29677#26085#26399#65306
   end
   object Label4: TLabel
     Left = 19
     Top = 88
-    Width = 98
+    Width = 84
     Height = 13
     Caption = #39318#26085#25490#29677#20154#21592#65306
   end
   object Label3: TLabel
     Left = 72
     Top = 28
-    Width = 42
+    Width = 36
     Height = 13
     Caption = #31185#23460#65306
   end

@@ -54,7 +54,7 @@ object frmpbxxquery: Tfrmpbxxquery
       TabOrder = 0
     end
     object dtfrom: TDateTimePicker
-      Left = 370
+      Left = 274
       Top = 24
       Width = 81
       Height = 21
@@ -63,7 +63,7 @@ object frmpbxxquery: Tfrmpbxxquery
       TabOrder = 1
     end
     object dtto: TDateTimePicker
-      Left = 274
+      Left = 370
       Top = 24
       Width = 81
       Height = 21

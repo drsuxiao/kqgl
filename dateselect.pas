@@ -41,9 +41,9 @@ procedure TFrmDateselect.additems;
 var
   asql: string;
 begin
-  asql := format('select t.code,e.name,t.deptcode from xh t left join employee e on t.code=e.code where t.deptcode=''%s'' order by t.sqno'
+  asql := format('(select t.code,e.name,t.deptcode,t.sqno from xh t left join employee e on t.code=e.code where t.deptcode=''%s'') t '
                  ,[PublicRule.GetComboxItemNo(cmbdept)]);
-  dspro.DataSet := dm.GetDataSet(asql);
+  {dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;
   cds.Active := true;
   if cds.RecordCount =0 then exit;
@@ -54,7 +54,8 @@ begin
   begin
     cbmfirst.Items.Add(cds.Fields[0].AsString +' '+ cds.Fields[1].AsString);
     cds.Next;
-  end;
+  end;}
+  InitDeptComboxList('code','name',asql,cbmfirst,'sqno');
 end;
 
 procedure TFrmDateselect.FormShow(Sender: TObject);
