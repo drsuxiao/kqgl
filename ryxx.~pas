@@ -82,7 +82,7 @@ var
   settings: TFormatSettings;
   dt: TDateTime;
 begin
-//解决不同系统时间格式不一致的问题
+  //解决不同系统时间格式不一致的问题
   GetLocaleFormatSettings(GetUserDefaultLCID, settings);
   settings.DateSeparator := '-';
   settings.TimeSeparator := ':';

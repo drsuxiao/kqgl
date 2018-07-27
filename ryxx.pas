@@ -79,15 +79,15 @@ settings.ShortTimeFormat := 'hh:nn:ss';dt:= strToDateTime('2010-3-19 08:09:10',s
 end;}
 var
   aform: TFrmedit_ryxx;
-  settings: TFormatSettings;
-  dt: TDateTime;
+  //settings: TFormatSettings;
+  //dt: TDateTime;
 begin
   //解决不同系统时间格式不一致的问题
-  GetLocaleFormatSettings(GetUserDefaultLCID, settings);
+  {GetLocaleFormatSettings(GetUserDefaultLCID, settings);
   settings.DateSeparator := '-';
   settings.TimeSeparator := ':';
   settings.ShortDateFormat := 'yyyy-mm-dd';
-  settings.ShortTimeFormat := 'hh:nn:ss';
+  settings.ShortTimeFormat := 'hh:nn:ss'; }
   //dt:= strToDateTime('2010-3-19 08:09:10',settings);
 
   aform := TFrmedit_ryxx.Create(nil);
@@ -99,9 +99,9 @@ begin
     aform.cbsex.ItemIndex := cds.FieldValues['sex'];   
     aform.cmbksmc.ItemIndex := aform.cmbksmc.Items.IndexOfObject(tobject(cds.FieldByName('deptcode').AsInteger));
     if cds.FieldValues['workdate'] <> null then
-      aform.dtworkdate.Date := strToDate(cds.FieldValues['workdate'],settings);//strtodatedef(cds.FieldValues['workdate'],strtodate('2018-01-01'));
+      aform.dtworkdate.Date := strToDate(cds.FieldValues['workdate'],publicrule.DataFormatSet);//strtodatedef(cds.FieldValues['workdate'],strtodate('2018-01-01'));
     if cds.FieldValues['birthday'] <> null then
-      aform.dtbirthday.Date := strToDate(cds.FieldValues['birthday'],settings);//strtodatedef(cds.FieldValues['birthday'],strtodate('2018-01-01'));
+      aform.dtbirthday.Date := strToDate(cds.FieldValues['birthday'],publicrule.DataFormatSet);//strtodatedef(cds.FieldValues['birthday'],strtodate('2018-01-01'));
     if aform.ShowModal = 1 then
       refresh;
   except

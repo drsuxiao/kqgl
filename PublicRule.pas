@@ -17,9 +17,23 @@ procedure InitDBGrid(mDBGrid: TDBGrid; vFields: string='');
 //初始化科室列表
 procedure InitDeptComboxList(vCode,vName,vTabelName: string; vCombox: TComboBox;vSortField: string='');
 function GetComboxItemNo(vCombox: TComboBox): string;
+//格式化时间格式
+function DataFormatSet():TFormatSettings;
 implementation
 uses dm,Variants;
 
+function DataFormatSet():TFormatSettings;
+var
+  settings: TFormatSettings;
+begin
+  //解决不同系统时间格式不一致的问题
+  GetLocaleFormatSettings(GetUserDefaultLCID, settings);
+  settings.DateSeparator := '-';
+  settings.TimeSeparator := ':';
+  settings.ShortDateFormat := 'yyyy-mm-dd';
+  settings.ShortTimeFormat := 'hh:nn:ss';
+  result := settings;
+end;
 function GetComboxItemNo(vCombox: TComboBox): string;
 begin
   result := inttostr(Integer(vCombox.Items.Objects[vCombox.ItemIndex]));

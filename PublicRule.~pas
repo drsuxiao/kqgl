@@ -7,7 +7,7 @@ uses  Windows, SysUtils, Classes, DBClient,DBGrids,Dialogs,ComObj,Graphics,math,
 //格式化字段名称
 procedure FormatDisplaylable(vDataSet: Tclientdataset; vFields: string);
 //导出Excel方法
-procedure DBGridExport(GRID:TDBGRID);
+procedure DBGridExport(GRID:TDBGRID;vFileName:string='');
 //返回记录数据网格列显示最大宽度是否成功
 function DBGridRecordSize(mColumn: TColumn): Boolean;
 //返回数据网格自动适应宽度是否成功
@@ -107,7 +107,7 @@ begin
     vDataSet.Fields[i].DisplayLabel := alist[i];
 end;
 
-procedure DBGridExport(GRID:TDBGRID);  
+procedure DBGridExport(GRID:TDBGRID;vFileName:string='');  
 var       //DBGRID控件内容存储到EXCEL 只有第一行有标题
     EclApp:Variant;
     XlsFileName:String;
@@ -118,7 +118,7 @@ var       //DBGRID控件内容存储到EXCEL 只有第一行有标题
 begin
    savedailog:=TSaveDialog.Create(nil);
    savedailog.Filter:='Excel files (*.xls)|*.XlS';
-   savedailog.FileName := '考勤分类汇总.xls';
+   savedailog.FileName := vFileName;
    if savedailog.Execute then begin
         xlsfilename:=savedailog.FileName;
         savedailog.Free;

@@ -83,7 +83,7 @@ begin
   cds1.First;
   while not cds1.Eof do
   begin
-    adate := strtodatetime(cds1.fieldbyname('rq').AsString);
+    adate := strtodatetime(cds1.fieldbyname('rq').AsString,publicrule.DataFormatSet);
     m := MonthOfTheYear(adate);
     w := GetTheWeek(adate);//NthDayOfWeek(adate);
     d := DayOfWeek(adate);
