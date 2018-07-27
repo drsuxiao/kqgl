@@ -130,7 +130,7 @@ end;
 
 procedure Tfrmpbxxquery.Button1Click(Sender: TObject);
 begin
-  DBGridExport(self.DBGrid1);
+  DBGridExport(self.DBGrid1,'≈≈∞‡–≈œ¢');
 end;
 
 procedure Tfrmpbxxquery.FormShow(Sender: TObject);

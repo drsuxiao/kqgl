@@ -51,6 +51,7 @@ object FrmDateselect: TFrmDateselect
     Width = 91
     Height = 21
     Date = 42835.928764282410000000
+    Format = 'yyyy-MM-dd'
     Time = 42835.928764282410000000
     TabOrder = 0
   end
@@ -60,6 +61,7 @@ object FrmDateselect: TFrmDateselect
     Width = 86
     Height = 21
     Date = 42835.928764282410000000
+    Format = 'yyyy-MM-dd'
     Time = 42835.928764282410000000
     TabOrder = 1
   end

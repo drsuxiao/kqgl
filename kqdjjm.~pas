@@ -69,7 +69,7 @@ begin
   begin
     aygbm := copy(aform.cmbname.Text,1,6);
     atype := copy(aform.cmbtype.Text,1,2);
-    adept := publicrule.GetComboxItemNo(cmbdept);
+    adept := publicrule.GetComboxItemNo(aform.cmbdept);
     anow := formatdatetime('yyyy-mm-dd',now);
     astdate := formatdatetime('yyyy-mm-dd',aform.dtfrom.datetime);
     aspdate := formatdatetime('yyyy-mm-dd',aform.dtto.datetime);

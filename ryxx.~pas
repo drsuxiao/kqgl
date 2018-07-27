@@ -58,21 +58,50 @@ begin
 end;  
 
 procedure TFrmryxx.btnmodifyClick(Sender: TObject);
+{var
+
+settings: TFormatSettings;
+
+dt: TDateTime;
+
+begin
+
+GetLocaleFormatSettings(GetUserDefaultLCID, settings);
+
+settings.DateSeparator := '-';
+
+settings.TimeSeparator := ':';
+
+settings.ShortDateFormat := 'yyyy-mm-dd';
+
+settings.ShortTimeFormat := 'hh:nn:ss';dt:= strToDateTime('2010-3-19 08:09:10',settings);
+
+end;}
 var
   aform: TFrmedit_ryxx;
+  settings: TFormatSettings;
+  dt: TDateTime;
 begin
+//解决不同系统时间格式不一致的问题
+  GetLocaleFormatSettings(GetUserDefaultLCID, settings);
+  settings.DateSeparator := '-';
+  settings.TimeSeparator := ':';
+  settings.ShortDateFormat := 'yyyy-mm-dd';
+  settings.ShortTimeFormat := 'hh:nn:ss';
+  //dt:= strToDateTime('2010-3-19 08:09:10',settings);
+
   aform := TFrmedit_ryxx.Create(nil);
   try
     aform.rdbtn.Checked := false;
     aform.rdbtn.Caption := cds.FieldValues['id'];
     aform.edtrybh.Text := cds.FieldValues['code'];
     aform.edtryxm.Text := cds.FieldValues['name'];
-    aform.cbsex.ItemIndex := cds.FieldValues['sex'];
+    aform.cbsex.ItemIndex := cds.FieldValues['sex'];   
     aform.cmbksmc.ItemIndex := aform.cmbksmc.Items.IndexOfObject(tobject(cds.FieldByName('deptcode').AsInteger));
     if cds.FieldValues['workdate'] <> null then
-      aform.dtworkdate.Date := strtodatedef(cds.FieldValues['workdate'],strtodate('2018-01-01'));
+      aform.dtworkdate.Date := strToDate(cds.FieldValues['workdate'],settings);//strtodatedef(cds.FieldValues['workdate'],strtodate('2018-01-01'));
     if cds.FieldValues['birthday'] <> null then
-      aform.dtbirthday.Date := strtodatedef(cds.FieldValues['birthday'],strtodate('2018-01-01'));
+      aform.dtbirthday.Date := strToDate(cds.FieldValues['birthday'],settings);//strtodatedef(cds.FieldValues['birthday'],strtodate('2018-01-01'));
     if aform.ShowModal = 1 then
       refresh;
   except

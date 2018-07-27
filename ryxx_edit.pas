@@ -56,16 +56,16 @@ var
 begin
   if (trim(edtrybh.Text)='') or (trim(edtryxm.Text)='') then exit; 
   if rdbtn.Checked then
-  begin
+  begin       
     afields := 'code,name,sex,deptcode,workdate,birthday';
-    avalues := format('''%s'',''%s'',''%s'',''%s'',''%s'',''%s''',[trim(edtrybh.Text),trim(edtryxm.Text),inttostr(cbsex.ItemIndex),GetComboxItemNo(cmbksmc),datetostr(dtworkdate.date),datetostr(dtbirthday.date)]);
+    avalues := format('''%s'',''%s'',''%s'',''%s'',''%s'',''%s''',[trim(edtrybh.Text),trim(edtryxm.Text),inttostr(cbsex.ItemIndex),GetComboxItemNo(cmbksmc),formatdatetime('YYYY-MM-HH',dtworkdate.DateTime),formatdatetime('YYYY-MM-HH',dtbirthday.DateTime)]);
     if dm.AppendData('employee',afields,avalues) then
       showmessage('数据新增成功！');
   end
   else begin
 
     asql := format('update employee set code=''%s'',name=''%s'',sex=''%s'',deptcode=''%s'',workdate=''%s'',birthday=''%s'' where id=%d'
-            ,[trim(edtrybh.Text),trim(edtryxm.Text),inttostr(cbsex.ItemIndex),GetComboxItemNo(cmbksmc),datetostr(dtworkdate.date),datetostr(dtbirthday.date),strtoint(rdbtn.Caption)]);
+            ,[trim(edtrybh.Text),trim(edtryxm.Text),inttostr(cbsex.ItemIndex),GetComboxItemNo(cmbksmc),formatdatetime('YYYY-MM-HH',dtworkdate.DateTime),formatdatetime('YYYY-MM-HH',dtbirthday.DateTime),strtoint(rdbtn.Caption)]);
     if dm.EditData(asql) then
       showmessage('数据修改成功！');
   end;

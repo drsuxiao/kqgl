@@ -41,7 +41,7 @@ procedure TFrmDateselect.additems;
 var
   asql: string;
 begin
-  asql := format('(select t.code,e.name,t.deptcode,t.sqno from xh t left join employee e on t.code=e.code where t.deptcode=''%s'') '
+  asql := format('(select t.code,e.name,t.deptcode,t.sqno from xh t left join employee e on t.code=e.code where t.deptcode=''%s'') t '
                  ,[PublicRule.GetComboxItemNo(cmbdept)]);
   {dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.Data;

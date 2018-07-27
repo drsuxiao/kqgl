@@ -64,7 +64,7 @@ begin
   publicrule.InitDeptComboxList('deptcode','deptname','department',cmbdept);
   self.ADODataSet1.Connection := dm.mycon;
   self.ADODataSet1.Active := false;
-  self.ADODataSet1.CommandText := format('select rtrim(code)+'',''+rtrim(name) from employee where deptcode=''%s'' order by xh',[publicrule.GetComboxItemNo(cmbdept)]);
+  self.ADODataSet1.CommandText := format('select rtrim(code)+'',''+rtrim(name) from employee where deptcode=''%s'' ',[publicrule.GetComboxItemNo(cmbdept)]);
   self.ADODataSet1.Active := true;
   if self.ADODataSet1.RecordCount =0 then exit;
   self.ADODataSet1.First;

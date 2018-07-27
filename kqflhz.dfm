@@ -27,28 +27,28 @@ object frmkqflhz: Tfrmkqflhz
     object Label1: TLabel
       Left = 208
       Top = 16
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #26085#26399#65306
     end
     object Label2: TLabel
       Left = 331
       Top = 16
-      Width = 14
+      Width = 12
       Height = 13
       Caption = #33267
     end
     object Label3: TLabel
       Left = 8
       Top = 16
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label4: TLabel
       Left = 432
       Top = 16
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #31867#22411#65306
     end
@@ -58,6 +58,7 @@ object frmkqflhz: Tfrmkqflhz
       Width = 81
       Height = 21
       Date = 42835.928764282410000000
+      Format = 'yyyy-MM-dd'
       Time = 42835.928764282410000000
       TabOrder = 0
     end
@@ -67,6 +68,7 @@ object frmkqflhz: Tfrmkqflhz
       Width = 81
       Height = 21
       Date = 42835.928764282410000000
+      Format = 'yyyy-MM-dd'
       Time = 42835.928764282410000000
       TabOrder = 1
     end

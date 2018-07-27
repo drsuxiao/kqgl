@@ -48,14 +48,14 @@ object Frmedit_ryxx: TFrmedit_ryxx
     object Label4: TLabel
       Left = 88
       Top = 92
-      Width = 37
+      Width = 27
       Height = 13
       Caption = #24615#21035':'
     end
     object Label5: TLabel
       Left = 60
       Top = 145
-      Width = 61
+      Width = 51
       Height = 13
       Caption = #24037#20316#26085#26399':'
     end
@@ -136,6 +136,7 @@ object Frmedit_ryxx: TFrmedit_ryxx
       Width = 113
       Height = 21
       Date = 43287.653948784730000000
+      Format = 'yyyy-MM-dd'
       Time = 43287.653948784730000000
       TabOrder = 7
     end
@@ -145,6 +146,7 @@ object Frmedit_ryxx: TFrmedit_ryxx
       Width = 113
       Height = 21
       Date = 43287.653973923610000000
+      Format = 'yyyy-MM-dd'
       Time = 43287.653973923610000000
       TabOrder = 8
     end

@@ -20,21 +20,21 @@ object FrmModifypb: TFrmModifypb
   object Label1: TLabel
     Left = 40
     Top = 88
-    Width = 84
+    Width = 72
     Height = 13
     Caption = #21407#25490#29677#20154#21592#65306
   end
   object Label2: TLabel
     Left = 176
     Top = 88
-    Width = 84
+    Width = 72
     Height = 13
     Caption = #29616#25490#29677#20154#21592#65306
   end
   object Label3: TLabel
     Left = 40
     Top = 32
-    Width = 42
+    Width = 36
     Height = 13
     Caption = #26085#26399#65306
   end
@@ -48,7 +48,7 @@ object FrmModifypb: TFrmModifypb
   object Label5: TLabel
     Left = 40
     Top = 56
-    Width = 42
+    Width = 36
     Height = 13
     Caption = #31185#23460#65306
   end
@@ -73,6 +73,7 @@ object FrmModifypb: TFrmModifypb
     Width = 105
     Height = 21
     Date = 42839.610935150460000000
+    Format = 'yyyy-MM-dd'
     Time = 42839.610935150460000000
     TabOrder = 2
     OnChange = dtrqChange

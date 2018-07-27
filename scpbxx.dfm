@@ -97,21 +97,21 @@ object Frmscpbxx: TFrmscpbxx
     object Label3: TLabel
       Left = 11
       Top = 16
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #31185#23460#65306
     end
     object Label2: TLabel
       Left = 326
       Top = 16
-      Width = 14
+      Width = 12
       Height = 13
       Caption = #33267
     end
     object Label1: TLabel
       Left = 211
       Top = 16
-      Width = 42
+      Width = 36
       Height = 13
       Caption = #26085#26399#65306
     end
@@ -130,6 +130,7 @@ object Frmscpbxx: TFrmscpbxx
       Width = 81
       Height = 21
       Date = 42835.928764282410000000
+      Format = 'yyyy-MM-dd'
       Time = 42835.928764282410000000
       TabOrder = 1
     end
@@ -139,6 +140,7 @@ object Frmscpbxx: TFrmscpbxx
       Width = 81
       Height = 21
       Date = 42835.928764282410000000
+      Format = 'yyyy-MM-dd'
       Time = 42835.928764282410000000
       TabOrder = 2
     end

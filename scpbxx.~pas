@@ -81,9 +81,9 @@ begin
 
   adt1 := aform.dtfrom.DateTime;
   adt2 := aform.dtto.DateTime;
-  adept := publicrule.GetComboxItemNo(cmbdept);     
-  afirst := copy(trim(aform.cbmfirst.Items[aform.cbmfirst.ItemIndex]),1,6);  //获取当前选择的内容
-
+  adept := publicrule.GetComboxItemNo(cmbdept);
+  afirst := publicrule.GetComboxItemNo(aform.cbmfirst);//copy(trim(aform.cbmfirst.Items[aform.cbmfirst.ItemIndex]),1,6);  //获取当前选择的内容
+  afirst := format('%.6d',[strtoint(afirst)]); //不足6位的前面补零
   if adt2-adt1 < 0 then exit;
   //执行存储过程
   asql := format('exec pro_create_schedule ''%s'',''%s'',''%s'',''%s'' '
