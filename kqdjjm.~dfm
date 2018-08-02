@@ -131,6 +131,7 @@ object frmkqdjjm: Tfrmkqdjjm
       Width = 81
       Height = 21
       Date = 42835.928764282410000000
+      Format = 'yyyy-MM-dd'
       Time = 42835.928764282410000000
       TabOrder = 1
     end
@@ -140,6 +141,7 @@ object frmkqdjjm: Tfrmkqdjjm
       Width = 81
       Height = 21
       Date = 42835.928764282410000000
+      Format = 'yyyy-MM-dd'
       Time = 42835.928764282410000000
       TabOrder = 2
     end

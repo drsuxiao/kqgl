@@ -64,13 +64,13 @@ begin
     awhere := ''
   else
     awhere := format(' and type=''%s'' ',[copy(cmbtype.Text,1,2)]);
-  asql := format('select * from (select ygbm,name,type,typename,sum(days) as days from (select * from view_kqhours where deptcode=''%s'' and startdate >= ''%s'' and stopdate <=''%s'' %s) as a group by ygbm,name,type,typename ) as b order by ygbm,type'
+  asql := format('select * from (select ygbm,name,type,typename,sum(hours) as hours,sum(days) as days from (select * from view_kqhours where deptcode=''%s'' and startdate >= ''%s'' and stopdate <=''%s'' %s) as a group by ygbm,name,type,typename ) as b order by ygbm,type'
                                         ,[publicrule.GetComboxItemNo(cmbdept),adt1,adt2,awhere]);
 
   dspro.DataSet := dm.GetDataSet(asql);
   cds.Data := dspro.data;
   cds.Active := true;
-  Initdbgrid(DBGrid1,'工资编号,姓名,类型编码,类型名称,天数');
+  Initdbgrid(DBGrid1,'工资编号,姓名,类型编码,类型名称,小时,天数');
 end;
 
 procedure Tfrmkqflhz.Button1Click(Sender: TObject);

@@ -134,8 +134,8 @@ begin
   aform.cmbdeptChange(nil);
   aform.cmbname.ItemIndex := aform.cmbname.Items.IndexOf(aygbm+','+aname);
   aform.cmbtype.ItemIndex := aform.cmbtype.Items.IndexOf(atype+','+atypename);
-  aform.dtfrom.DateTime := strtodatetime(astdate);
-  aform.dtto.DateTime := strtodatetime(aspdate);
+  aform.dtfrom.DateTime := strtodatetime(astdate,publicrule.DataFormatSet);
+  aform.dtto.DateTime := strtodatetime(aspdate,publicrule.DataFormatSet);
   aform.medt1.Text := asttime;
   aform.medt2.Text := asptime;
   aform.Memo1.Text := amemo;
